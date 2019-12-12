@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,500');
+@import '../global.scss';
 
 body {
   display: flex;
@@ -19,7 +20,7 @@ body {
 
 .card {
   position: relative;
-  width: 40%;
+  width: 80%;
   box-shadow: 0 0 25px 0 rgba(0,0,0, .35);
 }
 
@@ -76,11 +77,11 @@ body {
 .card__title::before {
   content: '';
   position: absolute;
-  background: yellow;
-  height: 100%;
+  background: $main-yellow-color;
+  height: calc(100% + .1em);
   width: calc(100% + 4rem);
   top: -.1em;
-  bottom: -.15em;
+  bottom: -.1em;
   left: -4rem;
   z-index: -1;
   // box-shadow: 0 0 10px 0 black;
@@ -89,8 +90,8 @@ body {
 .card__title::after {
   content: '';
   position: absolute;
-  background: yellow;
-  height: 100%;
+  background: $main-yellow-color;
+  height: calc(100% + .1em);
   width: 2rem;
   top: -.1em;
   bottom: -.15em;
@@ -105,17 +106,16 @@ body {
   text-align: right;
 }
 
+
 .yt {
-  color: #555;
-  
-  a {
+  color: black;
+}
+
+.purchase {
     color: inherit;
     text-decoration: none;
     position: relative;
-    opacity: .7;
-    transition: opacity 250ms;
     
-    &::after,
     &::before {
       content: '';
       height: 7px;
@@ -125,22 +125,12 @@ body {
       top: 110%;
     }
     
-    &::after {
-      background: yellow;
-      opacity: 1;
-      transition: opacity 250ms;
+    &::before {
+      background: $main-yellow-color;
     }
     
-    &::before {
+    &:hover::before {
       background: black;
     }
     
-    &:hover {
-      opacity: 1;
-      
-      &::after {
-        opacity: 0;
-      }
-    }
   }
-}

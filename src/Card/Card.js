@@ -7,7 +7,7 @@ function Card(props) {
 
       <div className="card">
 
-        <img src="//unsplash.it/405/705" alt="" className="card__img" />
+        <img src="//unsplash.it/400/250" alt="" className="card__img" />
 
         <div className="card__body">
           <h3 className="card__title">This is a card</h3>
@@ -16,7 +16,7 @@ function Card(props) {
 
       </div>
 
-      <div class="yt"><a href="#/">Purchase product</a></div>
+      <div className="yt"><a className="purchase" href="#/">Purchase product</a></div>
 
     </div>
 
