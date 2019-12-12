@@ -10,6 +10,13 @@ body {
   line-height: 1.6;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .card {
   position: relative;
   width: 40%;
@@ -94,11 +101,46 @@ body {
   box-shadow: inset 12px 0 10px -10px rgba(0,0,0,.5);
 }
 
-
-
-
-
-
 .card__text {
   text-align: right;
+}
+
+.yt {
+  color: #555;
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    opacity: .7;
+    transition: opacity 250ms;
+    
+    &::after,
+    &::before {
+      content: '';
+      height: 7px;
+      left: 0;
+      right: 0;
+      position: absolute;
+      top: 110%;
+    }
+    
+    &::after {
+      background: yellow;
+      opacity: 1;
+      transition: opacity 250ms;
+    }
+    
+    &::before {
+      background: black;
+    }
+    
+    &:hover {
+      opacity: 1;
+      
+      &::after {
+        opacity: 0;
+      }
+    }
+  }
 }
