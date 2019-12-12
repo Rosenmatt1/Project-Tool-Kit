@@ -1,3 +1,5 @@
+
+
 .container-1 { 
   background: #333; 
   text-align: center;
@@ -6,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: default;
 }
 
 /*
@@ -19,6 +22,7 @@
   height: 64px;
   line-height: 64px;
   transition: all 0.3s;
+  cursor: pointer;
   span {
     transition: all 0.3s;
     transform: scale(1, 1);
@@ -48,6 +52,7 @@
 .btn-one:hover::before {
   opacity: 1;
   transform: scale(1, 1);
+  cursor: pointer;
 }
 
 .btn-one::after {
@@ -58,4 +63,5 @@
 .btn-one:hover::after {
   transform: scale(1, .1);
   opacity: 0;
+  cursor: pointer;
 }
