@@ -6,21 +6,14 @@ function Page2(props) {
 
   const useStyles = makeStyles(theme => ({
     root: {
-      // width: '100vw',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0
     },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    }
+  
   }));
 
   const classes = useStyles();
   return (
     <div className={classes.root}>
-     
+      This is Page 2.
     </div>
   )
 }

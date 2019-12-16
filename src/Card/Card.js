@@ -4,29 +4,31 @@ const axios = require('axios');
 
 function Card(props) {
 
-  // axios.get('http://localhost:4000/api/categories')
-  //   .then(function (response) {
-  //     // handle success
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     // handle error
-  //     console.log(error);
-  //   })
-  
+    axios.get('http://localhost:4000/api/categories')
+      .then(function (response) {
+        // handle success
+        // console.log(response);
+        
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      // .finally(function (response) {
+      // })
 
-  // axios.get('http://localhost:4000/api/products/')
-  //   .then(function (response) {
-  //     // handle success
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     // handle error
-  //     console.log(error);
-  //   })
-  //   .finally(function () {
-  //     console.log("finally products fired")
-  //   });
+  axios.get('http://localhost:4000/api/products/')
+    .then(function (response) {
+      // handle success
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    // .finally(function () {
+    //   console.log("finally products fired")
+    // });
 
   axios({
     method: 'post',
@@ -35,7 +37,6 @@ function Card(props) {
       name: "household"
     }
   });
-
 
   return (
     <div className="flex-column">
@@ -54,8 +55,6 @@ function Card(props) {
       <div className="yt"><a className="purchase" href="#/">Purchase product</a></div>
 
     </div>
-
-
   )
 }
 
