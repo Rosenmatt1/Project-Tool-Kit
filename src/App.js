@@ -6,7 +6,7 @@ import Navbar from './Navbar/Navbar.js';
 import Footer from './Footer/Footer.js';
 import { Grid } from '@material-ui/core';
 // import Button from '@material-ui/core/Button';
-// import Button from './Button/Button.js'
+// import Button from './Button/Button.js';
 import { makeStyles } from '@material-ui/core/styles';
 import './global.scss';
 
@@ -28,12 +28,15 @@ function App() {
   return (
     <Grid container>
       <Navbar />
+
+      
+
       <Grid item sm className={classes.paper}>
         <Card />
       </Grid>
-      <Grid item sm className={classes.paper}>
+      {/* <Grid item sm className={classes.paper}>
         <Card />
-      </Grid>
+      </Grid> */}
 
       <Footer />
     </Grid>
