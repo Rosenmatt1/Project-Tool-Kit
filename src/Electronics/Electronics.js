@@ -1,5 +1,7 @@
 import React from 'react';
 import './Electronics.scss'
+import Item from '../Item/Item.js'
+import { Grid } from '@material-ui/core';
 const axios = require('axios');
 
 function Electronics(props) {
@@ -39,22 +41,17 @@ function Electronics(props) {
   });
 
   return (
-    <div className="flex-column">
-
-      <div className="card">
-
-        <img src="//unsplash.it/400/250" alt="" className="card__img" />
-
-        <div className="card__body">
-          <h3 className="card__title">Electronics</h3>
-          <p className="card__text">Lorem ipsum dolor sit amet consectetur adipiscing elit hac ultrices bibendum. </p>
-        </div>
-
-      </div>
-
-      <div className="yt"><a className="purchase" href="#/">Purchase product</a></div>
-
-    </div>
+    <Grid container spacing={3}
+      direction="row"
+      justify="center"
+      alignItems="center">
+      <Grid item >
+        <Item />
+      </Grid>
+      <Grid item >
+        <Item />
+      </Grid>
+    </Grid>
   )
 }
 

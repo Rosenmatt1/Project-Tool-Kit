@@ -32,12 +32,17 @@ function Footer(props) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(value)
   };
 
   return (
     <BrowserRouter >
       <Paper >
+
+        <Route exact path="/" component={Card} />
+        <Route path="/electronics" component={Electronics} />
+        <Route path="/clothing" component={Clothing} />
+        <Route path="/misc" component={Misc} />
+
         <Tabs
           value={value}
           className={classes.root}
@@ -58,10 +63,6 @@ function Footer(props) {
           </Link>
         </Tabs>
 
-        <Route exact path="/" component={Card} />
-        <Route path="/electronics" component={Electronics} />
-        <Route path="/clothing" component={Clothing} />
-        <Route path="/misc" component={Misc} />
       </Paper>
     </BrowserRouter>
   )
