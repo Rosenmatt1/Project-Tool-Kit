@@ -4,18 +4,18 @@ const axios = require('axios');
 
 function Card(props) {
 
-    axios.get('http://localhost:4000/api/categories')
-      .then(function (response) {
-        // handle success
-        // console.log(response);
-        
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      // .finally(function (response) {
-      // })
+  axios.get('http://localhost:4000/api/categories')
+    .then(function (response) {
+      // handle success
+      // console.log(response);
+
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+  // .finally(function (response) {
+  // })
 
   axios.get('http://localhost:4000/api/products/')
     .then(function (response) {
@@ -26,9 +26,9 @@ function Card(props) {
       // handle error
       console.log(error);
     })
-    // .finally(function () {
-    //   console.log("finally products fired")
-    // });
+  // .finally(function () {
+  //   console.log("finally products fired")
+  // });
 
   axios({
     method: 'post',
@@ -46,7 +46,7 @@ function Card(props) {
         <img src="//unsplash.it/400/250" alt="" className="card__img" />
 
         <div className="card__body">
-          <h3 className="card__title">This is a card</h3>
+          <h3 className="card__title">Page 1</h3>
           <p className="card__text">Lorem ipsum dolor sit amet consectetur adipiscing elit hac ultrices bibendum. </p>
         </div>
 

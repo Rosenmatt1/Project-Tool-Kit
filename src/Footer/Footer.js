@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Footer.scss'
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Tabs, Tab } from '@material-ui/core';
+// import Page2 from './Page2/Page2.js';
 
 const useStyles = makeStyles({
   root: {
@@ -30,9 +31,9 @@ function Footer(props) {
         textColor="primary"
         centered
       >
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Tab label="Item Three" />
+        <Tab label="Page 1" />
+        <Tab label="Page 2" />
+        <Tab label="Page 3" />
       </Tabs>
     </Paper>
   )
