@@ -21,11 +21,9 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   
-  const fetchResource = async () => {
-    const responseC = await axios.get('http://localhost:4000/api/categories')
-    // const responseP = await axios.get('http://localhost:4000/api/products')
-    setCategories(responseC.data)
-    // setProducts(responseP.data)
+  const fetchCategories = async () => {
+    const response = await axios.get('http://localhost:4000/api/categories')
+    setCategories(response.data)
   }
 
   const fetchProducts = () => {
@@ -39,7 +37,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetchResource()
+    fetchCategories()
     fetchProducts()
   }, [])
 
