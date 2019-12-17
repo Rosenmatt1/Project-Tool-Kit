@@ -23,13 +23,24 @@ function App() {
   
   const fetchResource = async () => {
     const responseC = await axios.get('http://localhost:4000/api/categories')
-    const responseP = await axios.get('http://localhost:4000/api/products')
+    // const responseP = await axios.get('http://localhost:4000/api/products')
     setCategories(responseC.data)
-    setProducts(responseP.data)
+    // setProducts(responseP.data)
+  }
+
+  const fetchProducts = () => {
+    axios.get('http://localhost:4000/api/products/')
+    .then(function (response) {
+      setProducts(response.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
   }
 
   useEffect(() => {
     fetchResource()
+    fetchProducts()
   }, [])
 
   const classes = useStyles();
