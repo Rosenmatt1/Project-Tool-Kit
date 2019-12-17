@@ -6,39 +6,6 @@ const axios = require('axios');
 
 function Electronics(props) {
 
-  axios.get('http://localhost:4000/api/categories')
-    .then(function (response) {
-      // handle success
-      // console.log(response);
-
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-  // .finally(function (response) {
-  // })
-
-  axios.get('http://localhost:4000/api/products/')
-    .then(function (response) {
-      // handle success
-      console.log(response);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-  // .finally(function () {
-  //   console.log("finally products fired")
-  // });
-
-  axios({
-    method: 'post',
-    url: 'http://localhost:4000/api/categories',
-    data: {
-      name: "household"
-    }
-  });
 
   return (
     <Grid container spacing={3}
