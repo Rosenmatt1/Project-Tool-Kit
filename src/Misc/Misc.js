@@ -1,8 +1,8 @@
 import React from 'react';
-import './Page3.scss'
+import './Misc.scss'
 import { makeStyles } from '@material-ui/core/styles';
 
-function Page3(props) {
+function Misc(props) {
 
   const useStyles = makeStyles(theme => ({
     root: {
@@ -20,7 +20,7 @@ function Page3(props) {
         <img src="//unsplash.it/400/250" alt="" className="card__img" />
 
         <div className="card__body">
-          <h3 className="card__title">Page 3</h3>
+          <h3 className="card__title">Misc</h3>
           <p className="card__text">Lorem ipsum dolor sit amet consectetur adipiscing elit hac ultrices bibendum. </p>
         </div>
 
@@ -32,4 +32,4 @@ function Page3(props) {
   )
 }
 
-export default Page3;
+export default Misc;

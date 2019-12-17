@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import './App.css';
 import Card from './Card/Card.js';
-import Page2 from './Page2/Page2.js';
-import Page3 from './Page3/Page3.js';
+import Electronics from './Electronics/Electronics.js'
+import Clothing from './Clothing/Clothing.js';
+import Misc from './Misc/Misc.js';
 import Navbar from './Navbar/Navbar.js';
 import Footer from './Footer/Footer.js';
 import { Grid } from '@material-ui/core';
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 function App() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState(null);
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(null);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -47,37 +48,15 @@ function App() {
     <Grid container>
       <Navbar />
 
-      <BrowserRouter>
+      {/* <BrowserRouter>
 
-        <Paper className={classes.tabs}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Link to="card">
-              <Tab label="Page 1" />
-            </Link>
-
-            <Link to="page2">
-              <Tab label="Page 2" />
-            </Link>
-
-            <Link to="page3">
-              <Tab label="Page 3" />
-            </Link>
-          </Tabs>
-        </Paper>
+       
 
         <Route exact path="/" component={Card} />
-        <Route path="/card" component={Card} />
-        <Route path="/page2" component={Page2} />
-        <Route path="/page3" component={Page3} />
-      </BrowserRouter>
+      
+      </BrowserRouter> */}
 
-      {/* <Footer /> */}
+      <Footer />
     </Grid>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import './Card.scss'
+import './Electronics.scss'
 const axios = require('axios');
 
-function Card(props) {
+function Electronics(props) {
 
   axios.get('http://localhost:4000/api/categories')
     .then(function (response) {
@@ -46,16 +46,16 @@ function Card(props) {
         <img src="//unsplash.it/400/250" alt="" className="card__img" />
 
         <div className="card__body">
-          <h3 className="card__title">Welcome</h3>
+          <h3 className="card__title">Electronics</h3>
           <p className="card__text">Lorem ipsum dolor sit amet consectetur adipiscing elit hac ultrices bibendum. </p>
         </div>
 
       </div>
 
-      <div className="yt"><a className="purchase" href="#/">Enter Store</a></div>
+      <div className="yt"><a className="purchase" href="#/">Purchase product</a></div>
 
     </div>
   )
 }
 
-export default Card;
+export default Electronics;
