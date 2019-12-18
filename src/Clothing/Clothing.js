@@ -4,13 +4,13 @@ import Item from '../Item/Item.js';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-function Clothing(props) {
+const useStyles = makeStyles(theme => ({
+  root: {
+  },
 
-  const useStyles = makeStyles(theme => ({
-    root: {
-    },
-  
-  }));
+}));
+
+function Clothing(props) {
 
   const classes = useStyles();
 

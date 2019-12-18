@@ -10,7 +10,7 @@ function Card(props) {
   return (
     <div className="container-1">
       <div onClick={cardFired} className="btn btn-one">
-        <span className="button-text">Login</span>
+        <span className="button-text">Enter</span>
       </div>
     </div>
   )

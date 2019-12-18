@@ -2,10 +2,9 @@ import React from 'react';
 import './Electronics.scss'
 import Item from '../Item/Item.js'
 import { Grid } from '@material-ui/core';
-const axios = require('axios');
+// const axios = require('axios');
 
 function Electronics(props) {
-
 
   return (
     <Grid container spacing={3}

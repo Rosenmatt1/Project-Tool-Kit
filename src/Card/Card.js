@@ -1,6 +1,8 @@
-import React, {  useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { enterSite } from '../redux/actions'
+import { enterSite } from '../redux/actions';
+import Electronics from '../Electronics/Electronics.js';
+import { Route, Link } from "react-router-dom";
 import './Card.scss'
 // const axios = require('axios');
 
@@ -53,7 +55,11 @@ function Card(props) {
 
       </div>
 
-      <div className="yt" onClick={() => handleEnterSite(true)}><a className="purchase" href="#/">Enter Store</a></div>
+      <Route path="/electronics" component={Electronics} />
+      <Link to="electronics">
+        <div className="yt" onClick={() => handleEnterSite(true)}><a className="purchase" href="#/">Enter Store</a></div>
+      </Link>
+
     </div>
   )
 }
