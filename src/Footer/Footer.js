@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Footer.scss'
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Tabs, Tab } from '@material-ui/core';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import Card from '../Card/Card.js';
 import Electronics from '../Electronics/Electronics.js'
 import Clothing from '../Clothing/Clothing.js';
@@ -35,10 +35,7 @@ function Footer(props) {
   };
 
   return (
-    <BrowserRouter >
       <Paper >
-
-        <Route exact path="/" component={Card} />
         <Route path="/electronics" component={Electronics} />
         <Route path="/clothing" component={Clothing} />
         <Route path="/misc" component={Misc} />
@@ -62,9 +59,7 @@ function Footer(props) {
             <Tab onChange={(e) => handleChange(e, 2)} label="Misc" />
           </Link>
         </Tabs>
-
       </Paper>
-    </BrowserRouter>
   )
 }
 

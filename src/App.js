@@ -5,55 +5,74 @@ import Navbar from './Navbar/Navbar.js';
 import Footer from './Footer/Footer.js';
 import { Grid } from '@material-ui/core';
 import { Paper, Tabs, Tab } from '@material-ui/core';
+import Card from './Card/Card.js';
 // import Button from '@material-ui/core/Button';
 // import Button from './Button/Button.js';
+import { connect } from 'react-redux';
+import { getCategories } from './redux/actions'
 import { makeStyles } from '@material-ui/core/styles';
 import './global.scss';
-const axios = require('axios'); 
+const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
   root: {
   },
- 
+
 }));
 
-function App() {
+function App(props) {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  
+  // const [enterSite, setEnterSite] = useState([]);
+  // console.log("props", props)
+
   const fetchCategories = async () => {
     const response = await axios.get('http://localhost:4000/api/categories')
     setCategories(response.data)
+    props.getCategories(response.data)
   }
 
   const fetchProducts = () => {
     axios.get('http://localhost:4000/api/products/')
-    .then(function (response) {
-      setProducts(response.data)
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
+      .then(function (response) {
+        setProducts(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   useEffect(() => {
-    fetchCategories()
-    fetchProducts()
+    // fetchCategories()
+    // fetchProducts()
   }, [])
+
+  console.log("entered prop in App", props.entered)
 
   const classes = useStyles();
 
-  // console.log("categories", categories)
-  // console.log("products", products)
-
   return (
     <Grid container>
-      <Navbar />
-
-
-      <Footer />
+      {!props.entered ?
+        <Route exact path="/" component={Card} />
+        :
+        <Grid>
+          <Navbar />
+          <Footer />
+        </Grid>
+      }
     </Grid>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log("redux state in App", state)
+  return {
+    categories: state.categories,
+    entered: state.enterSite
+  }
+}
+
+export default connect(mapStateToProps, { getCategories })(App)
+
+

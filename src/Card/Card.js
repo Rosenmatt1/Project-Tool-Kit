@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {  useState } from 'react';
+import { connect } from 'react-redux';
+import { enterSite } from '../redux/actions'
 import './Card.scss'
-const axios = require('axios');
+// const axios = require('axios');
 
 function Card(props) {
-
   // axios.get('http://localhost:4000/api/categories')
   //   .then(function (response) {
   //     // handle success
@@ -35,9 +36,12 @@ function Card(props) {
   //   }
   // });
 
+  const handleEnterSite = (enter) => {
+    props.enterSite(enter)
+  }
+
   return (
     <div className="flex-column">
-
       <div className="card">
 
         <img src="//unsplash.it/400/250" alt="" className="card__img" />
@@ -49,10 +53,13 @@ function Card(props) {
 
       </div>
 
-      <div className="yt"><a className="purchase" href="#/">Enter Store</a></div>
-
+      <div className="yt" onClick={() => handleEnterSite(true)}><a className="purchase" href="#/">Enter Store</a></div>
     </div>
   )
 }
 
-export default Card;
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps, { enterSite })(Card)
