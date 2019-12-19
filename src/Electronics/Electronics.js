@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 
 function Electronics(props) {
 
+  console.log(props)
+
   return (
     <Grid container spacing={3}
       direction="row"
@@ -38,7 +40,8 @@ function Electronics(props) {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.products.products
+    products: state.products.products,
+    tab: state.tabSelected
   }
 }
 

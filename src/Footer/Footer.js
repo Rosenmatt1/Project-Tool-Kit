@@ -44,12 +44,13 @@ function Footer(props) {
         textColor="primary"
         centered
       >
-        <Link to="electronics">
-          <Tab onClick={() => props.tabSelected(0)} label="Electronics" />
-        </Link>
- 
+
         <Link to="clothing">
-          <Tab onClick={() => props.tabSelected(1)}  label="Clothing" />
+          <Tab onClick={() => props.tabSelected(0)} label="Clothing" />
+        </Link>
+
+        <Link to="electronics">
+          <Tab onClick={() => props.tabSelected(1)} label="Electronics" />
         </Link>
 
         <Link to="misc">

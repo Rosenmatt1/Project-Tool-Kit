@@ -9,7 +9,7 @@ import Card from './Card/Card.js';
 // import Button from '@material-ui/core/Button';
 // import Button from './Button/Button.js';
 import { connect } from 'react-redux';
-import { getCategories, getProducts } from './redux/actions'
+import { getCategories, getProducts, enterSite } from './redux/actions'
 import { makeStyles } from '@material-ui/core/styles';
 import './global.scss';
 const axios = require('axios');
@@ -48,10 +48,11 @@ function App(props) {
   useEffect(() => {
     fetchCategories()
     fetchProducts()
+    props.enterSite(false)
   }, [])
 
   // console.log("entered prop in App", props.entered)
-  // console.log("App state Categories", props.products)
+  console.log("App state props", props)
 
   // const classes = useStyles();
 
@@ -78,6 +79,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getCategories, getProducts })(App)
+export default connect(mapStateToProps, { getCategories, getProducts, enterSite })(App)
 
 
