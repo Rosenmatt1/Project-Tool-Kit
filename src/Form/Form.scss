@@ -1,0 +1,29 @@
+.gridContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+.gridContainer:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ededed;
+    opacity: .4;
+}
+
+.buttonSpacer {
+  margin-top: 10px !important;
+}
+.inputSpacer {
+  margin-bottom: 15px !important;
+}
+

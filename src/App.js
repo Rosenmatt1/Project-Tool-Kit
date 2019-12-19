@@ -58,7 +58,11 @@ function App(props) {
   // const classes = useStyles();
 
   return (
+    <Grid container>
+      <Navbar />
+      <Footer />
     <Form />
+    </Grid>
     // <Grid container>
     //   {!props.entered ?
     //     <Route exact path="/" component={Card} />
