@@ -2,7 +2,7 @@ import React from 'react';
 import './Electronics.scss'
 import Item from '../Item/Item.js'
 import { Grid } from '@material-ui/core';
-// const axios = require('axios');
+import { connect } from 'react-redux';
 
 function Electronics(props) {
 
@@ -11,14 +11,35 @@ function Electronics(props) {
       direction="row"
       justify="center"
       alignItems="center">
-      <Grid item >
-        <Item />
-      </Grid>
-      <Grid item >
-        <Item />
-      </Grid>
+
+      {props.products.map((product, idx) => {
+        if (product.category_id === 2) {
+          return (
+            <Grid item>
+              <Item
+                category_id={2}
+                key={idx}
+                id={product.id}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+                img_url={product.img_url}
+              />
+            </Grid>
+          )
+        }
+   
+      })}
+
     </Grid>
   )
 }
 
-export default Electronics;
+
+const mapStateToProps = (state) => {
+  return {
+    products: state.products.products
+  }
+}
+
+export default connect(mapStateToProps)(Electronics)

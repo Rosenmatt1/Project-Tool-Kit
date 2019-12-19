@@ -1,32 +1,45 @@
 import React from 'react';
 import './Clothing.scss';
+import { connect } from 'react-redux';
 import Item from '../Item/Item.js';
 import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-  },
-
-}));
 
 function Clothing(props) {
-
-  const classes = useStyles();
 
   return (
     <Grid container spacing={3}
       direction="row"
       justify="center"
       alignItems="center">
-      <Grid item >
-        <Item />
-      </Grid>
-      <Grid item >
-        <Item />
-      </Grid>
+
+      {props.products.map((product, idx) => {
+        if (product.category_id === 1) {
+          return (
+            <Grid item>
+              <Item
+                category_id={1}
+                key={idx}
+                id={product.id}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+                img_url={product.img_url}
+              />
+            </Grid>
+          )
+        }
+   
+      })}
+
     </Grid>
   )
 }
 
-export default Clothing;
+
+const mapStateToProps = (state) => {
+  return {
+    products: state.products.products
+  }
+}
+
+export default connect(mapStateToProps)(Clothing)

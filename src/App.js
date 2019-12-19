@@ -51,7 +51,7 @@ function App(props) {
   }, [])
 
   // console.log("entered prop in App", props.entered)
-  console.log("App state Categories", props.products)
+  // console.log("App state Categories", props.products)
 
   // const classes = useStyles();
 

@@ -1,32 +1,43 @@
 import React from 'react';
 import './Misc.scss';
-import Item from '../Item/Item.js'
+import { connect } from 'react-redux';
+import Item from '../Item/Item.js';
 import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-  },
-
-}));
 
 function Misc(props) {
-
-  const classes = useStyles();
 
   return (
     <Grid container spacing={3}
       direction="row"
       justify="center"
-      alignItems="center">
-      <Grid item >
-        <Item />
-      </Grid>
-      <Grid item >
-        <Item />
-      </Grid>
+      alignItems="center"
+    >
+
+      {props.products.map((product, idx) => {
+        if (product.category_id === 3) {
+          return (
+            <Grid item>
+              <Item
+                category_id={3}
+                key={idx}
+                id={product.id}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+                img_url={product.img_url}
+              />
+            </Grid>
+          )
+        }
+      })}
     </Grid>
   )
 }
 
-export default Misc;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products.products
+  }
+}
+
+export default connect(mapStateToProps)(Misc)
