@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import './App.css';
 import Navbar from './Navbar/Navbar.js';
 import Footer from './Footer/Footer.js';
+import Form from './Form/Form.js';
 import { Grid } from '@material-ui/core';
 import Card from './Card/Card.js';
 // import Loader from './Loader/Loader.js';
@@ -10,15 +11,15 @@ import Card from './Card/Card.js';
 // import Button from './Button/Button.js';
 import { connect } from 'react-redux';
 import { getCategories, getProducts, enterSite } from './redux/actions'
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import './global.scss';
 const axios = require('axios');
 
-const useStyles = makeStyles(theme => ({
-  root: {
-  },
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//   },
 
-}));
+// }));
 
 function App(props) {
   // const [categories, setCategories] = useState([]);
@@ -57,22 +58,22 @@ function App(props) {
   // const classes = useStyles();
 
   return (
-    <Grid container>
-      {!props.entered ?
-        <Route exact path="/" component={Card} />
-        :
-        <Grid>
-          <Navbar />
-          {/* <Loader /> */}
-          <Footer />
-        </Grid>
-      }
-    </Grid>
+    <Form />
+    // <Grid container>
+    //   {!props.entered ?
+    //     <Route exact path="/" component={Card} />
+    //     :
+    //     <Grid>
+    //       <Navbar />
+    //       {/* <Loader /> */}
+    //       <Footer />
+    //     </Grid>
+    //   }
+    // </Grid>
   );
 }
 
 const mapStateToProps = (state) => {
-
   return {
     ...state,
     entered: state.enterSite
