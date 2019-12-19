@@ -1,13 +1,12 @@
-
-// import { GET_CATEGORIES } from '../actionTypes.js';
+// import { GET_PRODUCTS } from '../actionTypes.js';
 
 const initialState = {
-  categories: {}
+  products: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_CATEGORIES':
+    case 'GET_PRODUCTS':
       return action.payload
     default:
       return state;
