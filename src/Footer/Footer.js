@@ -6,8 +6,8 @@ import { Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { tabSelected } from '../redux/actions';
 import Electronics from '../Electronics/Electronics.js';
-import Clothing from '../Clothing/Clothing.js';
-import Misc from '../Misc/Misc.js';
+// import Clothing from '../Clothing/Clothing.js';
+// import Misc from '../Misc/Misc.js';
 
 const useStyles = makeStyles({
   root: {
@@ -34,8 +34,8 @@ function Footer(props) {
   return (
     <Paper >
       <Route path="/electronics" component={Electronics} />
-      <Route path="/clothing" component={Clothing} />
-      <Route path="/misc" component={Misc} />
+      <Route path="/clothing" component={Electronics} />
+      <Route path="/misc" component={Electronics} />
 
       <Tabs
         value={props.tab}

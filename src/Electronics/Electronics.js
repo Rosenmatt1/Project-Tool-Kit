@@ -15,7 +15,7 @@ function Electronics(props) {
       alignItems="center">
 
       {props.products.map((product, idx) => {
-        if (product.category_id === 2) {
+        if (product.category_id === (props.tab + 1)) {
           return (
             <Grid item>
               <Item
