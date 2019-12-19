@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { enterSite } from '../redux/actions';
-import Electronics from '../Electronics/Electronics.js';
+import Products from '../Products/Products.js';
 import { Route, Link } from "react-router-dom";
 import './Card.scss'
 // const axios = require('axios');
@@ -55,7 +55,7 @@ function Card(props) {
 
       </div>
 
-      <Route path="/electronics" component={Electronics} />
+      <Route path="/electronics" component={Products} />
       <Link to="electronics">
         <div className="yt" onClick={() => handleEnterSite(true)}><a className="purchase" href="#/">Enter Store</a></div>
       </Link>

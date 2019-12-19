@@ -9,10 +9,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 // import { Grid } from '@material-ui/core';
 
-
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
+    width: 345,
   },
 });
 
@@ -25,7 +24,7 @@ export default function Item(props) {
           <CardMedia
             component="img"
           alt={props.name}
-            min-height="140"
+            height="140"
           image="//unsplash.it/250/250"
           title={props.name}
           />

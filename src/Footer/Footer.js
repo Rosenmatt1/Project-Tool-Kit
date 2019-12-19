@@ -5,7 +5,7 @@ import { Paper, Tabs, Tab } from '@material-ui/core';
 import { Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { tabSelected } from '../redux/actions';
-import Electronics from '../Electronics/Electronics.js';
+import Products from '../Products/Products.js';
 // import Clothing from '../Clothing/Clothing.js';
 // import Misc from '../Misc/Misc.js';
 
@@ -33,9 +33,9 @@ function Footer(props) {
 
   return (
     <Paper >
-      <Route path="/electronics" component={Electronics} />
-      <Route path="/clothing" component={Electronics} />
-      <Route path="/misc" component={Electronics} />
+      <Route path="/electronics" component={Products} />
+      <Route path="/clothing" component={Products} />
+      <Route path="/misc" component={Products} />
 
       <Tabs
         value={props.tab}
@@ -44,7 +44,6 @@ function Footer(props) {
         textColor="primary"
         centered
       >
-
         <Link to="clothing">
           <Tab onClick={() => props.tabSelected(0)} label="Clothing" />
         </Link>

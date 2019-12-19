@@ -1,13 +1,10 @@
 import React from 'react';
-import './Electronics.scss'
+import './Products.scss'
 import Item from '../Item/Item.js'
 import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 
-function Electronics(props) {
-
-  console.log(props)
-
+function Products(props) {
   return (
     <Grid container spacing={3}
       direction="row"
@@ -30,9 +27,7 @@ function Electronics(props) {
             </Grid>
           )
         }
-   
       })}
-
     </Grid>
   )
 }
@@ -45,4 +40,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Electronics)
+export default connect(mapStateToProps)(Products)
