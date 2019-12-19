@@ -7,7 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+// import { Grid } from '@material-ui/core';
+
 
 const useStyles = makeStyles({
   card: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Item() {
+export default function Item(props) {
   const classes = useStyles();
 
   return (
@@ -23,24 +24,23 @@ export default function Item() {
         <CardActionArea>
           <CardMedia
             component="img"
-            alt="Contemplative Reptile"
-            height="140"
-            image="//unsplash.it/250/250"
-            title="Contemplative Reptile"
+          alt={props.name}
+            min-height="140"
+          image="//unsplash.it/250/250"
+          title={props.name}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              Lizard
+              {props.name}
           </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
+              {props.description}
           </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Share
+            Purchase
         </Button>
           <Button size="small" color="primary">
             Learn More
