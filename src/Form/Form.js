@@ -28,6 +28,7 @@ function Form(props) {
   const [password, setPassword] = useState("");
   const [emailError, showEmailError] = useState(false);
   const [passwordError, showPasswordError] = useState(false);
+  // isLoggedIn: localStorage.jwt ? true : false,
 
   const logInValidation = (val) => {
     if (!email.includes('@')) {
@@ -56,54 +57,87 @@ function Form(props) {
       setPassword("")
       showEmailError(false)
       showPasswordError(false)
-      // postUser()
+      postUser()
       props.loggedIn(val)
     }
   }
 
-  const postUser = () => {
-    axios({
-      method: 'post',
-      url: 'http://localhost:4000/api/user',
-      data: {
+  // const postUser = () => {
+  //   axios({
+  //     method: 'post',
+  //     url: 'http://localhost:4000/api/user',
+  //     data: {
+  //       username: email,
+  //       password: password
+  //     }
+  //       // .catch(function (error) {
+  //       //   // handle error
+  //       //   console.log(error);
+  //       // })
+  //       // .finally(function (response) {
+  //       //   console.log("post finally")
+  //       // })
+  //   })
+  // }
+
+
+
+  const postUser = (route) => {
+    fetch(`http://localhost:4000/api/user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify({
         username: email,
         password: password
-      }
-    });
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   })
-    // // .finally(function (response) {
-    // // })
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.jwt) {
+          console.log("jwt arrived!")
+          localStorage.setItem('jwt', data.jwt)
+          // this.props.setLogin(true)
+        } else {
+          console.log("no jwt")
+        }
+      })
+      .catch(error => {
+        console.error(error)
+      })
   }
 
+  // setLogin = (value) => {
+  //   const loggingOut = this.state.isLoggedIn && !value
+  //   let hiddenData = this.state.hiddenData
+  //   if (loggingOut) {
+  //     localStorage.removeItem('jwt')
+  //     hiddenData = ""
+  //   }
+  //   this.setState({
+  //     isLoggedIn: value,
+  //     isErrorDisplayed: false,
+  //     hiddenData: hiddenData
+  //   })
+  // }
 
-  // postData = (route) => {
-  //   fetch(`http://localhost:3001/auth/${route}`, {
-  //     method: "POST",
+  // fetchHiddenData = () => {
+  //   fetch(`http://localhost:3001/hidden`, {
+  //     method: "GET",
   //     headers: {
   //       "Content-Type": "application/json; charset=utf-8",
-  //     },
-  //     body: JSON.stringify({
-  //       username: this.refs.username.value,
-  //       password: this.refs.password.value
-  //     }),
+  //       "Authorization": "Bearer " + localStorage.jwt
+  //     }
   //   })
   //     .then(response => response.json())
   //     .then(data => {
-  //       if (data.jwt) {
-  //         localStorage.setItem('jwt', data.jwt)
-  //         this.props.setLogin(true)
-  //       } else {
-  //         this.props.setLogin(false)
-  //       }
-  //       this.props.displayError(false)
+  //       this.setState({
+  //         hiddenData: data.message.user.email
+  //       })
   //     })
   //     .catch(error => {
   //       console.error(error)
-  //       this.props.setLogin(false)
-  //       this.props.displayError(true)
   //     })
   // }
 
@@ -123,7 +157,6 @@ function Form(props) {
         />
         {emailError &&
           <div className="errorMessage">Email must include @.com </div>}
-
 
         <TextField
           id="standard-password-input"
