@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Form.scss';
 import TextField from '@material-ui/core/TextField';
+import { Route, Link } from "react-router-dom";
+import Products from '../Products/Products.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
@@ -23,23 +25,38 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Form(props) {
-  const [email, captureEmail] = useState("");
-  const [password, capturePassword] = useState("");
-  const [showEmailError, emailValidation] = useState(false);
-  const [showPasswordError, passwordValidation] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, showEmailError] = useState(false);
+  const [passwordError, showPasswordError] = useState(false);
 
   const logInValidation = (val) => {
-    if (!email.includes('@.com')) {
+    if (!email.includes('@')) {
       console.log("email failed")
-      emailValidation(true)
-    }
-    if (password.length < 6) {
-      console.log("password failed")
-      passwordValidation(true)
+      showEmailError(true)
+      setEmail("")
+      setPassword("")
+      if (password.length < 6) {
+        showPasswordError(false)
+      }
     }
 
-    if (email.includes('@.com') && password.length > 6) {
-      console.log("email validated")
+    if (password.length < 6) {
+      console.log("password failed")
+      showPasswordError(true)
+      setEmail("")
+      setPassword("")
+      if (!email.includes('@')) {
+        showEmailError(false)
+      }
+    }
+
+    if (email.includes('@') && password.length > 6) {
+      console.log("user validated")
+      setEmail("")
+      setPassword("")
+      showEmailError(false)
+      showPasswordError(false)
       // postUser()
       // props.loggedIn(val)
     }
@@ -55,11 +72,11 @@ function Form(props) {
       }
     });
     //   .catch(function (error) {
-  //     // handle error
-  //     console.log(error);
-  //   })
-  // // .finally(function (response) {
-  // // })
+    //     // handle error
+    //     console.log(error);
+    //   })
+    // // .finally(function (response) {
+    // // })
   }
 
 
@@ -101,27 +118,34 @@ function Form(props) {
           // required
           id="standard-required"
           label="Email"
-          onChange={(e) => captureEmail(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         // defaultValue="Hello World" 
         />
-        {showEmailError && 
+        {emailError &&
           <div className="errorMessage">Email must include @.com </div>}
 
-        
+
         <TextField
           id="standard-password-input"
           label="Password"
+          value={password}
           type="password"
           autoComplete="current-password"
           className="inputSpacer"
-          onChange={(e) => capturePassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        {showPasswordError &&
+
+        {passwordError &&
           <div className="errorMessage">Password length must be greater than 6 characters</div>}
 
-        <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
-          Login
+          
+        <Route path="/electronics" component={Products} />
+        <Link to="electronics">
+          <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
+            Login
         </Button>
+        </Link>
 
       </div>
     </form>

@@ -58,28 +58,32 @@ function App(props) {
   // const classes = useStyles();
 
   return (
-    <Grid container>
-      <Navbar />
-      <Footer />
-    <Form />
-    </Grid>
     // <Grid container>
-    //   {!props.entered ?
-    //     <Route exact path="/" component={Card} />
-    //     :
-    //     <Grid>
-    //       <Navbar />
-    //       {/* <Loader /> */}
-    //       <Footer />
-    //     </Grid>
-    //   }
+    //   <Navbar />
+    //   <Footer />
+    // <Form />
     // </Grid>
+    <Grid container>
+      {!props.entered ?
+        <Route exact path="/" component={Card} />
+        :
+        <Grid>
+          <Navbar />
+          { props.login &&
+            <Route path="/form" component={Form} />
+          }
+          
+          <Footer />
+        </Grid>
+      }
+    </Grid>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
     ...state,
+    login: state.openLogIn,
     entered: state.enterSite
   }
 }

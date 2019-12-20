@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, ENTER_SITE, TAB_SELECTED, GET_PRODUCTS, LOGGED_IN } from './actionTypes.js';
+import { GET_CATEGORIES, ENTER_SITE, TAB_SELECTED, GET_PRODUCTS, LOGGED_IN, OPEN_LOGIN } from './actionTypes.js';
 
 export const getCategories = ( data ) => ({
   type: GET_CATEGORIES,
@@ -23,4 +23,9 @@ export const tabSelected = ( tab ) => ({
 export const loggedIn = ( logged ) => ({
   type: LOGGED_IN,
   payload: logged
+});
+
+export const openLogIn = ( val )  => ({
+  type: OPEN_LOGIN,
+  payload: val
 });
