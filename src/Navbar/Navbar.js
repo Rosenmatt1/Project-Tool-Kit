@@ -24,6 +24,11 @@ function Navbar(props) {
     spacer: {
       display: 'flex',
       justifyContent: 'space-between',
+    }, 
+    centerer: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     }
   }));
 
@@ -43,7 +48,7 @@ function Navbar(props) {
 
         {props.logged
         ? 
-          <div>
+          <div className={classes.centerer}>
             <PersonIcon />
             <Link to="form">
               <Button onClick={() => handleLogIn(true, false)} color="inherit">logout</Button>

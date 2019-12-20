@@ -10,7 +10,6 @@ import { loggedIn } from '../redux/actions';
 const axios = require('axios');
 // import { Grid } from '@material-ui/core';
 
-
 const useStyles = makeStyles(theme => ({
   form: {
     margin: theme.spacing(1),
@@ -156,7 +155,7 @@ function Form(props) {
 const mapStateToProps = (state) => {
   return {
     ...state,
-    loggedIn: state.loggedIn
+    logged: state.loggedIn
   }
 }
 
