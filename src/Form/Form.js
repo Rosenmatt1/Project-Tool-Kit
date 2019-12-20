@@ -58,7 +58,7 @@ function Form(props) {
       showEmailError(false)
       showPasswordError(false)
       // postUser()
-      // props.loggedIn(val)
+      props.loggedIn(val)
     }
   }
 
@@ -139,7 +139,7 @@ function Form(props) {
         {passwordError &&
           <div className="errorMessage">Password length must be greater than 6 characters</div>}
 
-          
+
         <Route path="/electronics" component={Products} />
         <Link to="electronics">
           <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
@@ -156,7 +156,7 @@ function Form(props) {
 const mapStateToProps = (state) => {
   return {
     ...state,
-    logged: state.loggedIn
+    loggedIn: state.loggedIn
   }
 }
 

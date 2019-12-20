@@ -4,8 +4,9 @@ import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 import { Route, Link } from "react-router-dom";
 import Form from '../Form/Form.js';
 import MenuIcon from '@material-ui/icons/Menu';
+import PersonIcon from '@material-ui/icons/Person';
 import { connect } from 'react-redux';
-import { openLogIn } from '../redux/actions'
+import { openLogIn, loggedIn } from '../redux/actions'
 import { makeStyles } from '@material-ui/core/styles';
 
 function Navbar(props) {
@@ -26,6 +27,11 @@ function Navbar(props) {
     }
   }));
 
+  const handleLogIn = (val1, val2) => {
+    props.openLogIn(val1)
+    props.loggedIn(val2)
+  }
+
   const classes = useStyles();
 
   return (
@@ -35,10 +41,20 @@ function Navbar(props) {
           <MenuIcon />
         </IconButton>
 
-        <Link to="form">
-          <Button onClick={() => props.openLogIn(true)} color="inherit">Login</Button>
-        </Link>
-
+        {props.logged
+        ? 
+          <div>
+            <PersonIcon />
+            <Link to="form">
+              <Button onClick={() => handleLogIn(true, false)} color="inherit">logout</Button>
+            </Link>
+          </div>
+          :
+          <Link to="form">
+            <Button onClick={() => handleLogIn(true, true)} color="inherit">Login</Button>
+          </Link>
+        }
+   
       </Toolbar>
     </AppBar>
   )
@@ -48,7 +64,8 @@ const mapStateToProps = (state) => {
   return {
     ...state,
     login: state.openLogIn,
+    logged: state.loggedIn
   }
 }
 
-export default connect(mapStateToProps, { openLogIn })(Navbar)
+export default connect(mapStateToProps, { openLogIn, loggedIn })(Navbar)
