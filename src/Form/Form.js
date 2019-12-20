@@ -105,7 +105,7 @@ function Form(props) {
         // defaultValue="Hello World" 
         />
         {showEmailError && 
-        <div>Email must include @.com </div>}
+          <div className="errorMessage">Email must include @.com </div>}
 
         
         <TextField
@@ -117,7 +117,7 @@ function Form(props) {
           onChange={(e) => capturePassword(e.target.value)}
         />
         {showPasswordError &&
-          <div>Password length must be greater than 6 characters</div>}
+          <div className="errorMessage">Password length must be greater than 6 characters</div>}
 
         <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
           Login
