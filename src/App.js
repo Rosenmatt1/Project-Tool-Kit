@@ -53,7 +53,7 @@ function App(props) {
   }, [])
 
   // console.log("entered prop in App", props.entered)
-  console.log("App state props", props)
+  // console.log("App state props", props)
 
   // const classes = useStyles();
 

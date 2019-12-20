@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Form.scss';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,11 +23,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Form(props) {
-  const [username, captureUserName] = useState('Johny');
-  const [password, capturePassword] = useState('Appleseed');
+  const [email, captureEmail] = useState(null);
+  const [password, capturePassword] = useState(null);
 
   const logInValidation = (val) => {
-    props.loggedIn(val)
+
+    if (email.includes('@') && password.length > 6) {
+      console.log("email validated")
+      // postUser()
+      // props.loggedIn(val)
+    }
+    
   }
 
   const postUser = () => {
@@ -35,15 +41,18 @@ function Form(props) {
       method: 'post',
       url: 'http://localhost:4000/api/user',
       data: {
-        username: username,
+        username: email,
         password: password
       }
     });
+    //   .catch(function (error) {
+  //     // handle error
+  //     console.log(error);
+  //   })
+  // // .finally(function (response) {
+  // // })
   }
 
-  useEffect(() => {
-    postUser()
-  }, [])
 
   // postData = (route) => {
   //   fetch(`http://localhost:3001/auth/${route}`, {
@@ -83,6 +92,7 @@ function Form(props) {
           // required
           id="standard-required"
           label="Email"
+          onChange={(e) => captureEmail(e.target.value)}
         // defaultValue="Hello World" 
         />
 
@@ -92,6 +102,7 @@ function Form(props) {
           type="password"
           autoComplete="current-password"
           className="inputSpacer"
+          onChange={(e) => capturePassword(e.target.value)}
         />
 
         <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
@@ -107,7 +118,7 @@ function Form(props) {
 const mapStateToProps = (state) => {
   return {
     ...state,
-    loggedIn: state.loggedIn
+    logged: state.loggedIn
   }
 }
 
