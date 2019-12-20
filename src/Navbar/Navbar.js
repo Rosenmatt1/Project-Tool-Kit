@@ -4,6 +4,8 @@ import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 import { Route, Link } from "react-router-dom";
 import Form from '../Form/Form.js';
 import MenuIcon from '@material-ui/icons/Menu';
+import { connect } from 'react-redux';
+import { openLogIn } from '../redux/actions'
 import { makeStyles } from '@material-ui/core/styles';
 
 function Navbar(props) {
@@ -34,7 +36,7 @@ function Navbar(props) {
         </IconButton>
 
         <Link to="form">
-          <Button color="inherit">Login</Button>
+          <Button onClick={() => props.openLogIn(true)} color="inherit">Login</Button>
         </Link>
 
       </Toolbar>
@@ -42,4 +44,11 @@ function Navbar(props) {
   )
 }
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+    login: state.openLogIn,
+  }
+}
+
+export default connect(mapStateToProps, { openLogIn })(Navbar)
