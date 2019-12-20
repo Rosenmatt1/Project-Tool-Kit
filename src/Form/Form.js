@@ -23,17 +23,26 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Form(props) {
-  const [email, captureEmail] = useState(null);
-  const [password, capturePassword] = useState(null);
+  const [email, captureEmail] = useState("");
+  const [password, capturePassword] = useState("");
+  const [showEmailError, emailValidation] = useState(false);
+  const [showPasswordError, passwordValidation] = useState(false);
 
   const logInValidation = (val) => {
+    if (!email.includes('@.com')) {
+      console.log("email failed")
+      emailValidation(true)
+    }
+    if (password.length < 6) {
+      console.log("password failed")
+      passwordValidation(true)
+    }
 
-    if (email.includes('@') && password.length > 6) {
+    if (email.includes('@.com') && password.length > 6) {
       console.log("email validated")
       // postUser()
       // props.loggedIn(val)
     }
-    
   }
 
   const postUser = () => {
@@ -95,7 +104,10 @@ function Form(props) {
           onChange={(e) => captureEmail(e.target.value)}
         // defaultValue="Hello World" 
         />
+        {showEmailError && 
+        <div>Email must include @.com </div>}
 
+        
         <TextField
           id="standard-password-input"
           label="Password"
@@ -104,6 +116,8 @@ function Form(props) {
           className="inputSpacer"
           onChange={(e) => capturePassword(e.target.value)}
         />
+        {showPasswordError &&
+          <div>Password length must be greater than 6 characters</div>}
 
         <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
           Login
