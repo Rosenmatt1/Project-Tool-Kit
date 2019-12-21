@@ -33,8 +33,18 @@ function Navbar(props) {
   }));
 
   const handleLogIn = (val1, val2) => {
-    props.openLogIn(val1)
     props.loggedIn(val2)
+    props.openLogIn(val1)
+
+    if ( val2 === false ) {
+      // localStorage.removeItem('jwt')
+      // hiddenData = ""
+    }
+
+    if (val2 === true ) {
+      // localStorage.setItem('jwt')
+      // hiddenData = ""       //data comes from a get route
+    }
   }
 
   const classes = useStyles();

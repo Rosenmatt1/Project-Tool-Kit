@@ -80,8 +80,6 @@ function Form(props) {
   //   })
   // }
 
-
-
   const postUser = (route) => {
     fetch(`http://localhost:4000/api/user`, {
       method: "POST",
@@ -95,6 +93,7 @@ function Form(props) {
     })
       .then(response => response.json())
       .then(data => {
+        console.log("data", data)
         if (data.jwt) {
           console.log("jwt arrived!")
           localStorage.setItem('jwt', data.jwt)
@@ -178,6 +177,8 @@ function Form(props) {
             Login
         </Button>
         </Link>
+
+        <div className="account"> Already have an account? </div>
 
       </div>
     </form>
