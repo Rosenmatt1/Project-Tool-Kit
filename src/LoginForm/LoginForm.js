@@ -3,6 +3,7 @@ import './LoginForm.scss';
 import TextField from '@material-ui/core/TextField';
 import { Route, Link } from "react-router-dom";
 import Products from '../Products/Products.js';
+import CreateAccount from '../CreateAccount/CreateAccount.js'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
@@ -180,7 +181,10 @@ function LoginForm(props) {
         </Button>
         </Link>
 
+        <Route path="/createAccount" component={CreateAccount} />
+        <Link to="createAccount">
         <div className="account"> Already have an account? </div>
+        </Link>
 
       </div>
     </form>
