@@ -3,7 +3,8 @@ import { Route } from "react-router-dom";
 import './App.css';
 import Navbar from './Navbar/Navbar.js';
 import Footer from './Footer/Footer.js';
-import Form from './Form/Form.js';
+import LoginForm from './LoginForm/LoginForm.js';
+import CreateAccount from './CreateAccount/CreateAccount.js';
 import { Grid } from '@material-ui/core';
 import Card from './Card/Card.js';
 // import Loader from './Loader/Loader.js';
@@ -70,7 +71,7 @@ function App(props) {
         <Grid>
           <Navbar />
           { props.login &&
-            <Route path="/form" component={Form} />
+            <Route path="/createAccount" component={CreateAccount} />
           }
           
           <Footer />

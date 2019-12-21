@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Form.scss';
+import './CreateAccount.scss';
 import TextField from '@material-ui/core/TextField';
 import { Route, Link } from "react-router-dom";
 import Products from '../Products/Products.js';
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Form(props) {
+function CreateAccount(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, showEmailError] = useState(false);
@@ -146,6 +146,8 @@ function Form(props) {
     <form className="gridContainer" noValidate autoComplete="off">
       <div className={classes.form}>
 
+        <div> Create Account </div>
+
         <TextField
           // required
           id="standard-required"
@@ -193,4 +195,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { loggedIn })(Form)
+export default connect(mapStateToProps, { loggedIn })(CreateAccount)

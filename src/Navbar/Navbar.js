@@ -2,7 +2,7 @@ import React from 'react';
 import './Navbar.scss'
 import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 import { Route, Link } from "react-router-dom";
-import Form from '../Form/Form.js';
+import CreateAccount from '../CreateAccount/CreateAccount.js';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import { connect } from 'react-redux';
@@ -65,7 +65,7 @@ function Navbar(props) {
             </Link>
           </div>
           :
-          <Link to="form">
+          <Link to="createAccount">
             <Button onClick={() => handleLogIn(true, true)} color="inherit">Login</Button>
           </Link>
         }
