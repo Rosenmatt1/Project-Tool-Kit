@@ -58,7 +58,6 @@ function LoginForm(props) {
       setPassword("")
       showEmailError(false)
       showPasswordError(false)
-      postUser()
       props.loggedIn(val)
     }
   }
@@ -81,32 +80,32 @@ function LoginForm(props) {
   //   })
   // }
 
-  const postUser = (route) => {
-    fetch(`http://localhost:4000/api/user`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify({
-        username: email,
-        password: password
-      }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log("data", data)
-        if (data.jwt) {
-          console.log("jwt arrived!")
-          localStorage.setItem('jwt', data.jwt)
-          // this.props.setLogin(true)
-        } else {
-          console.log("no jwt")
-        }
-      })
-      .catch(error => {
-        console.error(error)
-      })
-  }
+  // const postUser = (route) => {
+  //   fetch(`http://localhost:4000/api/user`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json; charset=utf-8",
+  //     },
+  //     body: JSON.stringify({
+  //       username: email,
+  //       password: password
+  //     }),
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log("data", data)
+  //       if (data.jwt) {
+  //         console.log("jwt arrived!")
+  //         localStorage.setItem('jwt', data.jwt)
+  //         // this.props.setLogin(true)
+  //       } else {
+  //         console.log("no jwt")
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.error(error)
+  //     })
+  // }
 
   // setLogin = (value) => {
   //   const loggingOut = this.state.isLoggedIn && !value
@@ -183,7 +182,6 @@ function LoginForm(props) {
 
         <Route path="/createAccount" component={CreateAccount} />
         <Link to="createAccount">
-        <div className="account"> Already have an account? </div>
         </Link>
 
       </div>
