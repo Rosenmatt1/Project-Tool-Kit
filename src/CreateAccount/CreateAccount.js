@@ -7,7 +7,7 @@ import LoginForm from '../LoginForm/LoginForm.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { loggedIn } from '../redux/actions';
+import { loggedIn, username, userID } from '../redux/actions';
 const axios = require('axios');
 // import { Grid } from '@material-ui/core';
 
@@ -94,7 +94,10 @@ function CreateAccount(props) {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("data", data)
+        // console.log("data", data)
+        const username = data.username.slice(0, data.username.indexOf('@'))
+        props.username(username)
+        props.userID(data.id)
         if (data.jwt) {
           console.log("jwt arrived!")
           localStorage.setItem('jwt', data.jwt)
@@ -198,4 +201,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { loggedIn })(CreateAccount)
+export default connect(mapStateToProps, { loggedIn, username, userID })(CreateAccount)

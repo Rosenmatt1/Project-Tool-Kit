@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, ENTER_SITE, TAB_SELECTED, GET_PRODUCTS, LOGGED_IN, OPEN_LOGIN, USER_ID } from './actionTypes.js';
+import { GET_CATEGORIES, ENTER_SITE, TAB_SELECTED, GET_PRODUCTS, LOGGED_IN, OPEN_LOGIN, USER_ID, USERNAME } from './actionTypes.js';
 
 export const getCategories = ( data ) => ({
   type: GET_CATEGORIES,
@@ -33,4 +33,9 @@ export const openLogIn = ( val )  => ({
 export const userID = ( id ) => ({
   type: USER_ID,
   payload: id
+});
+
+export const username = (username) => ({
+  type: USERNAME,
+  payload: username
 });

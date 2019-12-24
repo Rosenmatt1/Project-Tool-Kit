@@ -7,7 +7,7 @@ import CreateAccount from '../CreateAccount/CreateAccount.js'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { loggedIn } from '../redux/actions';
+import { loggedIn, username, userID } from '../redux/actions';
 const axios = require('axios');
 // import { Grid } from '@material-ui/core';
 
@@ -58,54 +58,41 @@ function LoginForm(props) {
       setPassword("")
       showEmailError(false)
       showPasswordError(false)
+      postUser()
       props.loggedIn(val)
     }
   }
 
-  // const postUser = () => {
-  //   axios({
-  //     method: 'post',
-  //     url: 'http://localhost:4000/api/user',
-  //     data: {
-  //       username: email,
-  //       password: password
-  //     }
-  //       // .catch(function (error) {
-  //       //   // handle error
-  //       //   console.log(error);
-  //       // })
-  //       // .finally(function (response) {
-  //       //   console.log("post finally")
-  //       // })
-  //   })
-  // }
 
-  // const postUser = (route) => {
-  //   fetch(`http://localhost:4000/api/user`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json; charset=utf-8",
-  //     },
-  //     body: JSON.stringify({
-  //       username: email,
-  //       password: password
-  //     }),
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log("data", data)
-  //       if (data.jwt) {
-  //         console.log("jwt arrived!")
-  //         localStorage.setItem('jwt', data.jwt)
-  //         // this.props.setLogin(true)
-  //       } else {
-  //         console.log("no jwt")
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.error(error)
-  //     })
-  // }
+  const postUser = (route) => {
+    fetch(`http://localhost:4000/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify({
+        username: email,
+        password: password
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("data", data)
+        const username = data.username.slice(0, data.username.indexOf('@'))
+        props.username(username)
+        props.userID(data.id)
+        // if (data.jwt) {
+        //   console.log("jwt arrived!")
+        //   localStorage.setItem('jwt', data.jwt)
+        //   // this.props.setLogin(true)
+        // } else {
+        //   console.log("no jwt")
+        // }
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }
 
   // setLogin = (value) => {
   //   const loggingOut = this.state.isLoggedIn && !value
@@ -197,4 +184,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { loggedIn })(LoginForm)
+export default connect(mapStateToProps, { loggedIn, username, userID })(LoginForm)

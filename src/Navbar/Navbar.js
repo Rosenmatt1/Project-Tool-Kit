@@ -61,6 +61,7 @@ function Navbar(props) {
         ? 
           <div className={classes.centerer}>
             <PersonIcon />
+            <div>{props.username}</div>
             <Link to="form">
               <Button onClick={() => handleLogIn(true, false)} color="inherit">logout</Button>
             </Link>
@@ -80,7 +81,8 @@ const mapStateToProps = (state) => {
   return {
     ...state,
     login: state.openLogIn,
-    logged: state.loggedIn
+    logged: state.loggedIn,
+    username: state.username
   }
 }
 
