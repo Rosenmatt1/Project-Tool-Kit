@@ -77,17 +77,15 @@ function LoginForm(props) {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("data", data)
-        const username = data.username.slice(0, data.username.indexOf('@'))
+        const username = data.user.username.slice(0, data.user.username.indexOf('@'))
         props.username(username)
-        props.userID(data.id)
-        // if (data.jwt) {
-        //   console.log("jwt arrived!")
-        //   localStorage.setItem('jwt', data.jwt)
-        //   // this.props.setLogin(true)
-        // } else {
-        //   console.log("no jwt")
-        // }
+        props.userID(data.user.id)
+        if (data.jwt) {
+          localStorage.setItem('jwt', data.jwt)
+          props.loggedIn(true)
+        } else {
+          console.log("no jwt")
+        }
       })
       .catch(error => {
         console.error(error)
