@@ -37,7 +37,7 @@ function Navbar(props) {
     if ( val2 === false ) {
       props.loggedIn(val2)
       props.openLogIn(val1)
-      // localStorage.removeItem('jwt')
+      localStorage.removeItem('jwt')
       // hiddenData = ""
     }
 
