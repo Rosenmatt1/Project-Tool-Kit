@@ -32,6 +32,9 @@ function LoginForm(props) {
   // isLoggedIn: localStorage.jwt ? true : false,
 
   const logInValidation = (val) => {
+    const validateUsername = /^\w+@\w+\.com/.test(email)
+    console.log(validateUsername)
+    
     if (!email.includes('@')) {
       console.log("email failed")
       showEmailError(true)
