@@ -34,8 +34,8 @@ function LoginForm(props) {
   const logInValidation = (val) => {
     const validateUsername = /^\w+@\w+\.com/.test(email)
     console.log(validateUsername)
-    
-    if (!email.includes('@')) {
+
+    if (validateUsername === false) {
       console.log("email failed")
       showEmailError(true)
       setEmail("")
@@ -50,12 +50,12 @@ function LoginForm(props) {
       showPasswordError(true)
       setEmail("")
       setPassword("")
-      if (!email.includes('@')) {
+      if (validateUsername === false) {
         showEmailError(false)
       }
     }
 
-    if (email.includes('@') && password.length > 6) {
+    if (validateUsername && password.length > 6) {
       console.log("user validated")
       setEmail("")
       setPassword("")
@@ -160,7 +160,6 @@ function LoginForm(props) {
         {passwordError &&
           <div className="errorMessage">Password length must be greater than 6 characters</div>}
 
-
         <Route path="/electronics" component={Products} />
         <Link to="electronics">
           <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
@@ -170,6 +169,7 @@ function LoginForm(props) {
 
         <Route path="/createAccount" component={CreateAccount} />
         <Link to="createAccount">
+          <div className="account"> Don't have an account? </div>
         </Link>
 
       </div>

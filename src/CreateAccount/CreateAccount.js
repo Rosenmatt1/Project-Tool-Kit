@@ -32,7 +32,9 @@ function CreateAccount(props) {
   // isLoggedIn: localStorage.jwt ? true : false,
 
   const logInValidation = (val) => {
-    if (!email.includes('@')) {
+    const validateUsername = /^\w+@\w+\.com/.test(email)
+
+    if (validateUsername === false) {
       console.log("email failed")
       showEmailError(true)
       setEmail("")
@@ -47,12 +49,12 @@ function CreateAccount(props) {
       showPasswordError(true)
       setEmail("")
       setPassword("")
-      if (!email.includes('@')) {
+      if (validateUsername === false) {
         showEmailError(false)
       }
     }
 
-    if (email.includes('@') && password.length > 6) {
+    if (validateUsername && password.length > 6) {
       console.log("user validated")
       setEmail("")
       setPassword("")
@@ -162,7 +164,7 @@ function CreateAccount(props) {
         // defaultValue="Hello World" 
         />
         {emailError &&
-          <div className="errorMessage">Email must include @.com </div>}
+          <div className="errorMessage">Must provide a valid .com email address </div>}
 
         <TextField
           id="standard-password-input"
@@ -175,8 +177,7 @@ function CreateAccount(props) {
         />
 
         {passwordError &&
-          <div className="errorMessage">Password length must be greater than 6 characters</div>}
-
+          <div className="errorMessage"> Password length must be greater than 6 characters </div>}
 
         <Route path="/electronics" component={Products} />
         <Link to="electronics">
