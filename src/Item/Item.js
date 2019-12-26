@@ -13,6 +13,9 @@ const useStyles = makeStyles({
   card: {
     width: 345,
   },
+  description: {
+    height: 90,
+  }
 });
 
 export default function Item(props) {
@@ -32,7 +35,7 @@ export default function Item(props) {
             <Typography gutterBottom variant="h5" component="h2">
               {props.name}
           </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+          <Typography className={classes.description} variant="body2" color="textSecondary" component="p">
               {props.description}
           </Typography>
           </CardContent>
@@ -41,9 +44,7 @@ export default function Item(props) {
           <Button size="small" color="primary">
             Purchase
         </Button>
-          <Button size="small" color="primary">
-            Learn More
-        </Button>
+       
         </CardActions>
       </Card>
   );
