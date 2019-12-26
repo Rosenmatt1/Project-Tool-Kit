@@ -4,6 +4,7 @@ import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 import { Route, Link } from "react-router-dom";
 import CreateAccount from '../CreateAccount/CreateAccount.js';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
 import { connect } from 'react-redux';
 import { openLogIn, loggedIn } from '../redux/actions'
@@ -55,6 +56,10 @@ function Navbar(props) {
       <Toolbar className={classes.spacer}>
         <IconButton edge="start" color="inherit" aria-label="menu">
           <MenuIcon />
+          {/* <Route exact path="/" component={Card} />
+          <Link to="home">
+            <HomeIcon onClick={() => props.enterSite(false)} fontSize="large" />
+          </Link> */}
         </IconButton>
 
         {props.logged

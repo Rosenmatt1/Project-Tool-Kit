@@ -70,13 +70,13 @@ function App(props) {
         :
         <Grid>
           <Navbar />
-          { props.login &&
-          <div>
-            <Route path="/createAccount" component={CreateAccount} />
-            <Route path="/loginForm" component={LoginForm} />
-          </div>
+          {props.login &&
+            <div>
+              <Route path="/createAccount" component={CreateAccount} />
+              <Route path="/loginForm" component={LoginForm} />
+            </div>
           }
-          
+
           <Footer />
         </Grid>
       }
