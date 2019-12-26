@@ -94,16 +94,17 @@ function CreateAccount(props) {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log("data", data)
-        const username = data.username.slice(0, data.username.indexOf('@'))
+        console.log("data", data)
+        const username = data.user.username.slice(0, data.user.username.indexOf('@'))
         props.username(username)
-        props.userID(data.id)
+        props.userID(data.user.id)
         if (data.jwt) {
           console.log("jwt arrived!")
           localStorage.setItem('jwt', data.jwt)
-          // this.props.setLogin(true)
+          props.loggedIn(true)
         } else {
           console.log("no jwt")
+          console.log("data", data)
         }
       })
       .catch(error => {
@@ -186,7 +187,7 @@ function CreateAccount(props) {
 
         <Route path="/loginForm" component={LoginForm} />
         <Link to="loginForm">
-        <div className="account"> Already have an account? </div>
+          <div className="account"> Already have an account? </div>
         </Link>
 
       </div>
