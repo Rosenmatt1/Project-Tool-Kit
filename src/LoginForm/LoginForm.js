@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import * as _ from 'lodash';
 import './LoginForm.scss';
 import TextField from '@material-ui/core/TextField';
 import { Route, Link } from "react-router-dom";
 import Products from '../Products/Products.js';
+import Loader from '../Loader/Loader.js';
 import CreateAccount from '../CreateAccount/CreateAccount.js'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { loggedIn, username, userID } from '../redux/actions';
+import { loggedIn, username, userID, showLoader } from '../redux/actions';
 const axios = require('axios');
 // import { Grid } from '@material-ui/core';
 
@@ -57,6 +59,7 @@ function LoginForm(props) {
 
     if (validateUsername && password.length > 6) {
       console.log("user validated")
+      waitThree()
       setEmail("")
       setPassword("")
       showEmailError(false)
@@ -66,6 +69,12 @@ function LoginForm(props) {
     }
   }
 
+  const waitThree = () => {
+    props.showLoader(true)
+    _.delay((val) => {
+      props.showLoader(val)
+    }, 1000, false)
+  }
 
   const postUser = (route) => {
     fetch(`http://localhost:4000/api/login`, {
@@ -160,7 +169,7 @@ function LoginForm(props) {
         {passwordError &&
           <div className="errorMessage">Password length must be greater than 6 characters</div>}
 
-        <Route path="/electronics" component={Products} />
+        <Route path="/electronics" component={props.loader ? Loader : Products} />
         <Link to="electronics">
           <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
             Login
@@ -181,8 +190,9 @@ function LoginForm(props) {
 const mapStateToProps = (state) => {
   return {
     ...state,
-    logged: state.loggedIn
+    logged: state.loggedIn,
+    loader: state.showLoader
   }
 }
 
-export default connect(mapStateToProps, { loggedIn, username, userID })(LoginForm)
+export default connect(mapStateToProps, { loggedIn, username, userID, showLoader })(LoginForm)
