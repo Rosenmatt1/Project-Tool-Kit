@@ -8,5 +8,6 @@ import loggedIn from './loggedIn';
 import openLogIn from './openLogIn';
 import userID from './userID';
 import username from './username';
+import showLoader from './showLoader';
 
-export default combineReducers({ categories, enterSite, tabSelected, products, loggedIn, openLogIn, userID, username })
+export default combineReducers({ categories, enterSite, tabSelected, products, loggedIn, openLogIn, userID, username, showLoader })

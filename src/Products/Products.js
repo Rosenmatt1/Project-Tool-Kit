@@ -5,19 +5,20 @@ import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 
 function Products(props) {
+
   return (
     <Grid container spacing={3}
       direction="row"
       justify="center"
       alignItems="center">
 
-      {props.products.map((product, idx) => {
+      {props.products.map(product => {
         if (product.category_id === (props.tab + 1)) {
           return (
             <Grid item>
               <Item
-                category_id={2}
-                key={idx}
+                category_id={props.tab + 1}
+                key={product.id}
                 id={product.id}
                 name={product.name}
                 description={product.description}
@@ -31,7 +32,6 @@ function Products(props) {
     </Grid>
   )
 }
-
 
 const mapStateToProps = (state) => {
   return {

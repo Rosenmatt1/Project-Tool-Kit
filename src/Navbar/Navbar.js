@@ -34,14 +34,12 @@ function Navbar(props) {
   }));
 
   const handleLogIn = (val1, val2) => {
-
     if ( val2 === false ) {
       props.loggedIn(val2)
       props.openLogIn(val1)
       localStorage.removeItem('jwt')
       // hiddenData = ""
     }
-
     if (val2 === true ) {
       props.openLogIn(val1)
       // localStorage.setItem('jwt')
@@ -76,7 +74,7 @@ function Navbar(props) {
             <Button onClick={() => handleLogIn(true, true)} color="inherit">Login</Button>
           </Link>
         }
-   
+        
       </Toolbar>
     </AppBar>
   )
