@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import './CreateAccount.scss';
+import * as _ from 'lodash';
 import TextField from '@material-ui/core/TextField';
 import { Route, Link } from "react-router-dom";
 import Products from '../Products/Products.js';
 import LoginForm from '../LoginForm/LoginForm.js';
+import Loader from '../Loader/Loader.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { loggedIn, username, userID } from '../redux/actions';
+import { loggedIn, username, userID, showLoader } from '../redux/actions';
 const axios = require('axios');
 // import { Grid } from '@material-ui/core';
 
@@ -56,6 +58,7 @@ function CreateAccount(props) {
 
     if (validateUsername && password.length > 6) {
       console.log("user validated")
+      waitThree()
       setEmail("")
       setPassword("")
       showEmailError(false)
@@ -63,6 +66,13 @@ function CreateAccount(props) {
       postUser()
       props.loggedIn(val)
     }
+  }
+
+  const waitThree = () => {
+    props.showLoader(true)
+    _.delay((val) => {
+      props.showLoader(val)
+    }, 1000, false)
   }
 
   // const postUser = () => {
@@ -179,7 +189,7 @@ function CreateAccount(props) {
         {passwordError &&
           <div className="errorMessage"> Password length must be greater than 6 characters </div>}
 
-        <Route path="/electronics" component={Products} />
+        <Route path="/electronics" component={props.loader ? Loader : Products} />
         <Link to="electronics">
           <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
             Login
@@ -199,8 +209,9 @@ function CreateAccount(props) {
 const mapStateToProps = (state) => {
   return {
     ...state,
-    logged: state.loggedIn
+    logged: state.loggedIn,
+    loader: state.showLoader
   }
 }
 
-export default connect(mapStateToProps, { loggedIn, username, userID })(CreateAccount)
+export default connect(mapStateToProps, { loggedIn, username, userID, showLoader })(CreateAccount)
