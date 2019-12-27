@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Route } from "react-router-dom";
 import * as _ from 'lodash';
 import './App.css';
@@ -17,29 +17,21 @@ import { getCategories, getProducts, enterSite, showLoader } from './redux/actio
 import './global.scss';
 const axios = require('axios');
 
-
 // const useStyles = makeStyles(theme => ({
 //   root: {
 //   },
-
 // }));
 
 function App(props) {
-  // const [categories, setCategories] = useState([]);
-  // const [products, setProducts] = useState([]);
-  // const [showLoader, setLoaderDelay] = useState(false);
-  // console.log("props", props)
 
   const fetchCategories = async () => {
     const response = await axios.get('http://localhost:4000/api/categories')
-    // setCategories(response.data)
     props.getCategories(response.data)
   }
 
   const fetchProducts = () => {
     axios.get('http://localhost:4000/api/products/')
       .then(function (response) {
-        // setProducts(response.data)
         props.getProducts(response.data)
       })
       .catch(function (error) {
@@ -50,37 +42,28 @@ function App(props) {
   }
 
   const waitThree = () => {
-    props.showLoader(true)
     _.delay((val) => {
       props.showLoader(val)
-    }, 2500, false)
+    }, 1000, false)
   }
 
   useEffect(() => {
+    waitThree()
     fetchCategories()
     fetchProducts()
-    props.enterSite(false)
-    waitThree()
+    // props.enterSite(false)
   }, [])
-
-  // console.log("entered prop in App", props.entered)
-  // console.log("App state props", props)
 
   // const classes = useStyles();
 
   return (
-    // <Grid container>
-    //   <Navbar />
-    //   <Footer />
-    // <Form />
-    // </Grid>
     <Grid container>
-      { props.loader ?
+      {props.loader ?
         <Loader />
         :
         !props.entered ?
           <Route exact path="/" component={Card} />
-        :
+          :
           <Grid>
             <Navbar />
             {props.login &&
@@ -89,27 +72,9 @@ function App(props) {
                 <Route path="/loginForm" component={LoginForm} />
               </div>
             }
-
             <Footer />
           </Grid>
       }
-
-       {/* {!props.entered ?
-        <Route exact path="/" component={Card} />
-        :
-        <Grid>
-          <Navbar />
-          {props.login &&
-            <div>
-              <Route path="/createAccount" component={CreateAccount} />
-              <Route path="/loginForm" component={LoginForm} />
-            </div>
-          }
-
-          <Footer />
-        </Grid>
-      } */}
-
     </Grid>
   );
 }

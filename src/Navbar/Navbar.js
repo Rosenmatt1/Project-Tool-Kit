@@ -1,10 +1,10 @@
 import React from 'react';
 import './Navbar.scss'
 import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
-import { Route, Link } from "react-router-dom";
-import CreateAccount from '../CreateAccount/CreateAccount.js';
+import { Link } from "react-router-dom";
+// import CreateAccount from '../CreateAccount/CreateAccount.js';
 import MenuIcon from '@material-ui/icons/Menu';
-import HomeIcon from '@material-ui/icons/Home';
+// import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
 import { connect } from 'react-redux';
 import { openLogIn, loggedIn } from '../redux/actions'
@@ -25,7 +25,7 @@ function Navbar(props) {
     spacer: {
       display: 'flex',
       justifyContent: 'space-between',
-    }, 
+    },
     centerer: {
       display: 'flex',
       justifyContent: 'center',
@@ -34,13 +34,13 @@ function Navbar(props) {
   }));
 
   const handleLogIn = (val1, val2) => {
-    if ( val2 === false ) {
+    if (val2 === false) {
       props.loggedIn(val2)
       props.openLogIn(val1)
       localStorage.removeItem('jwt')
       // hiddenData = ""
     }
-    if (val2 === true ) {
+    if (val2 === true) {
       props.openLogIn(val1)
       // localStorage.setItem('jwt')
       // hiddenData = ""       //data comes from a get route
@@ -61,20 +61,20 @@ function Navbar(props) {
         </IconButton>
 
         {props.logged
-        ? 
+          ?
           <div className={classes.centerer}>
             <PersonIcon />
             <div>{props.username}</div>
-            <Link to="form">
+            <Link style={{ textDecoration: 'none', color: 'white' }} to="form">
               <Button onClick={() => handleLogIn(true, false)} color="inherit">logout</Button>
             </Link>
           </div>
           :
-          <Link to="createAccount">
+          <Link style={{ textDecoration: 'none', color: 'white' }} to="createAccount">
             <Button onClick={() => handleLogIn(true, true)} color="inherit">Login</Button>
           </Link>
         }
-        
+
       </Toolbar>
     </AppBar>
   )

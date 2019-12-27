@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Item(props) {
+function Item(props) {
   const classes = useStyles();
 
   console.log("Item props", props)
@@ -59,3 +59,4 @@ export default function Item(props) {
     </Card>
   );
 }
+export default Item

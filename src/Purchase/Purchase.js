@@ -22,7 +22,8 @@ const useStyles = makeStyles({
 });
 
 function Purchase(props) {
-  const classes = useStyles();
+
+  // const classes = useStyles();
 
   console.log("props", props)
 
@@ -58,4 +59,4 @@ function Purchase(props) {
   );
 }
 
-export default (Purchase)
+export default Purchase
