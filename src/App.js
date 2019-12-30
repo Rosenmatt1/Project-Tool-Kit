@@ -9,6 +9,7 @@ import CreateAccount from './CreateAccount/CreateAccount.js';
 import { Grid } from '@material-ui/core';
 import Card from './Card/Card.js';
 import Loader from './Loader/Loader.js';
+// import Purchase from './Purchase/Purchase.js';
 // import Button from '@material-ui/core/Button';
 // import Button from './Button/Button.js';
 import { connect } from 'react-redux';

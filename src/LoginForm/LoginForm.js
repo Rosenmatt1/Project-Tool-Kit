@@ -104,20 +104,6 @@ function LoginForm(props) {
       })
   }
 
-  // setLogin = (value) => {
-  //   const loggingOut = this.state.isLoggedIn && !value
-  //   let hiddenData = this.state.hiddenData
-  //   if (loggingOut) {
-  //     localStorage.removeItem('jwt')
-  //     hiddenData = ""
-  //   }
-  //   this.setState({
-  //     isLoggedIn: value,
-  //     isErrorDisplayed: false,
-  //     hiddenData: hiddenData
-  //   })
-  // }
-
   // fetchHiddenData = () => {
   //   fetch(`http://localhost:3001/hidden`, {
   //     method: "GET",

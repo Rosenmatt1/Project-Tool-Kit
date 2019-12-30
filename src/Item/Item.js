@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 function Item(props) {
   const classes = useStyles();
 
-  console.log("Item props", props)
+  console.log("Item props", props.key)
 
   return (
     <Card className={classes.card}>
@@ -46,13 +46,12 @@ function Item(props) {
       </CardActionArea>
       <CardActions>
 
-        <Route path="/purchase" component={Purchase} />
         {/* render={(props) => <Purchase name={props.name} description={props.description} category_id={props.category_id} id={props.id} key={props.key} price={props.price}
           img_url={props.img_url} />} */}
         <Link to="purchase">
           <Button size="small" color="primary">
             Purchase
-        </Button>
+          </Button>
         </Link>
 
       </CardActions>

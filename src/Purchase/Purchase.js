@@ -9,26 +9,31 @@ import { makeStyles } from '@material-ui/core/styles';
 // import Typography from '@material-ui/core/Typography';
 // import { Route, Link } from "react-router-dom";
 
-// import Item from '../Item/Item.js'
+import Products from '../Products/Products.js'
 // import { Grid } from '@material-ui/core';
 
-const useStyles = makeStyles({
-  card: {
-    width: 345,
+const useStyles = makeStyles(theme => ({
+  purchase: {
+    margin: theme.spacing(1),
+    width: '250px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // border: '1px solid red',
+    zIndex: 3
   },
-  description: {
-    height: 90,
-  }
-});
+}));
 
 function Purchase(props) {
 
-  // const classes = useStyles();
+  const classes = useStyles();
 
   console.log("props", props)
 
   return (
-    <h1>A Card</h1>
+    // <h1 className={classes.purchase}>Purchase</h1>
+    <Products />
     // <Card className={classes.card}>
     // <CardActionArea>
     //    <CardMedia 
