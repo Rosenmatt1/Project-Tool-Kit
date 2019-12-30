@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 
 function Products(props) {
+  const products = props.products || null
 
   return (
     <Grid container spacing={3}
@@ -12,23 +13,26 @@ function Products(props) {
       justify="center"
       alignItems="center">
 
-      {props.products.map(product => {
-        if (product.category_id === (props.tab + 1)) {
-          return (
-            <Grid item>
-              <Item
-                category_id={props.tab + 1}
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                description={product.description}
-                price={product.price}
-                img_url={product.img_url}
-              />
-            </Grid>
-          )
-        }
-      })}
+      {products ?
+        products.map(product => {
+          if (product.category_id === (props.tab + 1)) {
+            return (
+              <Grid item>
+                <Item
+                  category_id={props.tab + 1}
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  description={product.description}
+                  price={product.price}
+                  img_url={product.img_url}
+                />
+              </Grid>
+            )
+          }
+        })
+        : null
+      }
     </Grid>
   )
 }

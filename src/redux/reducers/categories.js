@@ -2,7 +2,7 @@
 // import { GET_CATEGORIES } from '../actionTypes.js';
 
 const initialState = {
-  categories: {}
+  categories: null
 };
 
 export default (state = initialState, action) => {

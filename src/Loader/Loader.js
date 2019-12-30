@@ -3,7 +3,7 @@ import './Loader.scss'
 
 function Loader() {
   return (
-    <div class="lds-circle"><div></div></div>
+    <div className="lds-circle"><div></div></div>
   )
 }
 

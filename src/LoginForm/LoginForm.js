@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { loggedIn, username, userID, showLoader } from '../redux/actions';
-const axios = require('axios');
+// const axios = require('axios');
 // import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
