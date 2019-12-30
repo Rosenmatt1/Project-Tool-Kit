@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    // border: '1px solid red',
     zIndex: 3
   },
 }));
@@ -76,8 +75,11 @@ function LoginForm(props) {
     }, 1000, false)
   }
 
+  const url = "https://my-store-toolkit.herokuapp.com/api"
+  // http://localhost:4000/api
+
   const postUser = (route) => {
-    fetch(`http://localhost:4000/api/login`, {
+    fetch(`${url}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",

@@ -25,13 +25,16 @@ const axios = require('axios');
 
 function App(props) {
 
+  const url = "https://my-store-toolkit.herokuapp.com/api"
+  // http://localhost:4000/api
+
   const fetchCategories = async () => {
-    const response = await axios.get('http://localhost:4000/api/categories')
+    const response = await axios.get(`${url}/categories`)
     props.getCategories(response.data)
   }
 
   const fetchProducts = () => {
-    axios.get('http://localhost:4000/api/products/')
+    axios.get(`${url}/products/`)
       .then(function (response) {
         props.getProducts(response.data)
       })

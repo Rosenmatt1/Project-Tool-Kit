@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { loggedIn, username, userID, showLoader } from '../redux/actions';
-const axios = require('axios');
+// const axios = require('axios');
 // import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -32,6 +32,9 @@ function CreateAccount(props) {
   const [emailError, showEmailError] = useState(false);
   const [passwordError, showPasswordError] = useState(false);
   // isLoggedIn: localStorage.jwt ? true : false,
+
+  const url = "https://my-store-toolkit.herokuapp.com/api"
+  // http://localhost:4000/api
 
   const logInValidation = (val) => {
     const validateUsername = /^\w+@\w+\.com/.test(email)
@@ -94,7 +97,7 @@ function CreateAccount(props) {
   // }
 
   const postUser = (route) => {
-    fetch(`http://localhost:4000/api/user`, {
+    fetch(`${url}/user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",

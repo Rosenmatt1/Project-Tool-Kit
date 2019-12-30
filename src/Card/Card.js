@@ -27,7 +27,7 @@ function Card(props) {
 
         <div className="card__body">
           <h3 className="card__title">Welcome</h3>
-          <p className="card__text"> A discount store with the highest qualoty products.  </p>
+          <p className="card__text"> A discount store with the highest quality products.  </p>
         </div>
 
       </div>
