@@ -39,7 +39,6 @@ function Navbar(props) {
       props.openLogIn(val1)
       props.username("")
       localStorage.removeItem('jwt')
-
     }
     if (val2 === true) {
       props.openLogIn(val1)
@@ -59,12 +58,12 @@ function Navbar(props) {
           </Link> */}
         </IconButton>
 
-        {props.logged
+        {props.authenticated
           ?
           <div className={classes.centerer}>
             <PersonIcon />
-            <div>{props.username}</div>
-            <Link style={{ textDecoration: 'none', color: 'white' }} to="form">
+            <div>{props.user}</div>
+            <Link style={{ textDecoration: 'none', color: 'white' }} to="createAccount">
               <Button onClick={() => handleLogIn(true, false)} color="inherit">logout</Button>
             </Link>
           </div>
@@ -83,8 +82,8 @@ const mapStateToProps = (state) => {
   return {
     ...state,
     login: state.openLogIn,
-    logged: state.loggedIn,
-    username: state.username
+    authenticated: state.loggedIn,
+    user: state.username
   }
 }
 

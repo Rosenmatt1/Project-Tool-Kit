@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, ENTER_SITE, TAB_SELECTED, GET_PRODUCTS, LOGGED_IN, OPEN_LOGIN, USER_ID, USERNAME, SHOWLOADER } from './actionTypes.js';
+import { GET_CATEGORIES, ENTER_SITE, TAB_SELECTED, GET_PRODUCTS, LOGGED_IN, OPEN_LOGIN, USER_ID, USERNAME, SHOWLOADER, ERROR_400 } from './actionTypes.js';
 
 export const getCategories = ( data ) => ({
   type: GET_CATEGORIES,
@@ -42,5 +42,10 @@ export const username = (username) => ({
 
 export const showLoader = ( val ) => ({
   type: SHOWLOADER,
+  payload: val
+});
+
+export const error400 = ( val ) => ({
+  type: ERROR_400,
   payload: val
 });

@@ -9,5 +9,6 @@ import openLogIn from './openLogIn';
 import userID from './userID';
 import username from './username';
 import showLoader from './showLoader';
+import error400 from './error400.js';
 
-export default combineReducers({ categories, enterSite, tabSelected, products, loggedIn, openLogIn, userID, username, showLoader })
+export default combineReducers({ categories, enterSite, tabSelected, products, loggedIn, openLogIn, userID, username, showLoader, error400 })

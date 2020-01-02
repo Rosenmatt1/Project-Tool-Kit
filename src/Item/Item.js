@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 function Item(props) {
   const classes = useStyles();
 
-  console.log("Item props", props.key)
+  // console.log("Item props", props.key)
 
   return (
     <Card className={classes.card}>

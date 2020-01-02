@@ -9,7 +9,7 @@ import CreateAccount from '../CreateAccount/CreateAccount.js'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { loggedIn, username, userID, showLoader } from '../redux/actions';
+import { loggedIn, username, userID, showLoader, error400 } from '../redux/actions';
 // const axios = require('axios');
 // import { Grid } from '@material-ui/core';
 
@@ -57,14 +57,18 @@ function LoginForm(props) {
     }
 
     if (validateUsername && password.length > 6) {
-      console.log("user validated")
+      console.log("user validated on front end")
       waitThree()
       setEmail("")
       setPassword("")
       showEmailError(false)
       showPasswordError(false)
       postUser()
-      props.loggedIn(val)
+      if (props.invalidUsername) {
+        props.loggedIn(false)
+      } else {
+        props.loggedIn(true)
+      }
     }
   }
 
@@ -90,7 +94,13 @@ function LoginForm(props) {
         password: password
       }),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.status === 400) {
+          console.log("login400error")
+          props.error400(true)
+        }
+        response.json()
+      })
       .then(data => {
         const username = data.user.username.slice(0, data.user.username.indexOf('@'))
         props.username(username)
@@ -143,7 +153,7 @@ function LoginForm(props) {
         // defaultValue="Hello World" 
         />
         {emailError &&
-          <div className="errorMessage">Email must include @.com </div>}
+          <div className="errorMessage"> Email must include @.com </div>}
 
         <TextField
           id="standard-password-input"
@@ -156,14 +166,32 @@ function LoginForm(props) {
         />
 
         {passwordError &&
-          <div className="errorMessage">Password length must be greater than 6 characters</div>}
+          <div className="errorMessage"> Password length must be greater than 6 characters </div>}
+
+        {props.invalidUserInfo &&
+          <div className="errorMessage"> Invalid Username or Password </div>}
 
         <Route path="/electronics" component={props.loader ? Loader : Products} />
         <Link to="electronics">
           <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
             Login
-        </Button>
+          </Button>
         </Link>
+        {/* {props.authenticated ?
+          <div>
+            <Route path="/electronics" component={props.loader ? Loader : Products} />
+            <Link to="electronics">
+              <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
+                Login
+          </Button>
+            </Link>
+          </div>
+          :
+          <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
+            Login
+          </Button>
+        } */}
+
 
         <Route path="/createAccount" component={CreateAccount} />
         <Link to="createAccount">
@@ -172,16 +200,17 @@ function LoginForm(props) {
 
       </div>
     </form>
-
   );
 }
 
 const mapStateToProps = (state) => {
+  console.log("login state", state)
   return {
     ...state,
-    logged: state.loggedIn,
-    loader: state.showLoader
+    authenticated: state.loggedIn,
+    loader: state.showLoader,
+    invalidUserInfo: state.error400
   }
 }
 
-export default connect(mapStateToProps, { loggedIn, username, userID, showLoader })(LoginForm)
+export default connect(mapStateToProps, { loggedIn, username, userID, showLoader, error400 })(LoginForm)

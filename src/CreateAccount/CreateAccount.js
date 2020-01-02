@@ -108,9 +108,14 @@ function CreateAccount(props) {
         password: password
       }),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.status === 400) {
+          console.log("createAccount400error")
+        }
+        response.json()
+      })
       .then(data => {
-        console.log("data", data)
+        console.log("createAccount data", data)
         const username = data.user.username.slice(0, data.user.username.indexOf('@'))
         props.username(username)
         props.userID(data.user.id)
@@ -213,7 +218,7 @@ function CreateAccount(props) {
 const mapStateToProps = (state) => {
   return {
     ...state,
-    logged: state.loggedIn,
+    authenticated: state.loggedIn,
     loader: state.showLoader
   }
 }
