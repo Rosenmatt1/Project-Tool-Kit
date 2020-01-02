@@ -103,8 +103,10 @@ function LoginForm(props) {
       })
       .then(data => {
         const username = data.user.username.slice(0, data.user.username.indexOf('@'))
-        props.username(username)
-        props.userID(data.user.id)
+        if (username) {
+          props.username(username)
+          props.userID(data.user.id)
+        }
         if (data.jwt) {
           localStorage.setItem('jwt', data.jwt)
           props.loggedIn(true)
@@ -204,7 +206,6 @@ function LoginForm(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log("login state", state)
   return {
     ...state,
     authenticated: state.loggedIn,

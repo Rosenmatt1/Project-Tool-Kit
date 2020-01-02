@@ -1,13 +1,15 @@
 import React from 'react';
 import './Navbar.scss'
 import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import * as _ from 'lodash';
 // import CreateAccount from '../CreateAccount/CreateAccount.js';
 import MenuIcon from '@material-ui/icons/Menu';
-// import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
+import HomeIcon from '@material-ui/icons/Home';
+import Card from '../Card/Card.js';
 import { connect } from 'react-redux';
-import { openLogIn, loggedIn, username } from '../redux/actions'
+import { openLogIn, loggedIn, username, enterSite, showLoader } from '../redux/actions';
 import { makeStyles } from '@material-ui/core/styles';
 
 function Navbar(props) {
@@ -45,17 +47,29 @@ function Navbar(props) {
     }
   }
 
+  const backToHome = () => {
+    props.enterSite(false)
+    waitThree()
+  }
+
+  const waitThree = () => {
+    props.showLoader(true)
+    _.delay((val) => {
+      props.showLoader(val)
+    }, 1000, false)
+  }
+
   const classes = useStyles();
 
   return (
     <AppBar className={classes.root} position="static">
       <Toolbar className={classes.spacer}>
         <IconButton edge="start" color="inherit" aria-label="menu">
-          <MenuIcon />
-          {/* <Route exact path="/" component={Card} />
-          <Link to="home">
-            <HomeIcon onClick={() => props.enterSite(false)} fontSize="large" />
-          </Link> */}
+          {/* <MenuIcon /> */}
+          <Route exact path="/" component={Card} />
+          <Link to="/">
+            <HomeIcon style={{ textDecoration: 'none', color: 'white' }} onClick={() => backToHome(false)} fontSize="large" />
+          </Link>
         </IconButton>
 
         {props.authenticated
@@ -63,7 +77,7 @@ function Navbar(props) {
           <div className={classes.centerer}>
             <PersonIcon />
             <div>{props.user}</div>
-            <Link style={{ textDecoration: 'none', color: 'white' }} to="createAccount">
+            <Link style={{ textDecoration: 'none', color: 'white' }} to="loginForm">
               <Button onClick={() => handleLogIn(true, false)} color="inherit">logout</Button>
             </Link>
           </div>
@@ -87,4 +101,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { openLogIn, loggedIn, username })(Navbar)
+export default connect(mapStateToProps, { openLogIn, loggedIn, username, enterSite,showLoader })(Navbar)
