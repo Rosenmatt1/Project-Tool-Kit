@@ -75,7 +75,8 @@ function LoginForm(props) {
     }, 1000, false)
   }
 
-  const url = "https://my-store-toolkit.herokuapp.com/api"
+  const url = "http://localhost:4000/api"
+  // "https://my-store-toolkit.herokuapp.com/api"
   // http://localhost:4000/api
 
   const postUser = (route) => {

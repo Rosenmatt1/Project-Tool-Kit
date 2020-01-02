@@ -33,7 +33,8 @@ function CreateAccount(props) {
   const [passwordError, showPasswordError] = useState(false);
   // isLoggedIn: localStorage.jwt ? true : false,
 
-  const url = "https://my-store-toolkit.herokuapp.com/api"
+  const url = "http://localhost:4000/api"
+  // "https://my-store-toolkit.herokuapp.com/api"
   // http://localhost:4000/api
 
   const logInValidation = (val) => {
@@ -195,7 +196,7 @@ function CreateAccount(props) {
         <Route path="/electronics" component={props.loader ? Loader : Products} />
         <Link to="electronics">
           <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
-            Login
+            Create
         </Button>
         </Link>
 

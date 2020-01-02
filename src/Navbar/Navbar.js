@@ -7,7 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 // import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
 import { connect } from 'react-redux';
-import { openLogIn, loggedIn } from '../redux/actions'
+import { openLogIn, loggedIn, username } from '../redux/actions'
 import { makeStyles } from '@material-ui/core/styles';
 
 function Navbar(props) {
@@ -37,13 +37,12 @@ function Navbar(props) {
     if (val2 === false) {
       props.loggedIn(val2)
       props.openLogIn(val1)
+      props.username("")
       localStorage.removeItem('jwt')
-      // hiddenData = ""
+
     }
     if (val2 === true) {
       props.openLogIn(val1)
-      // localStorage.setItem('jwt')
-      // hiddenData = ""       //data comes from a get route
     }
   }
 
@@ -89,4 +88,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { openLogIn, loggedIn })(Navbar)
+export default connect(mapStateToProps, { openLogIn, loggedIn, username })(Navbar)
