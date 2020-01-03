@@ -13,7 +13,7 @@ import Loader from './Loader/Loader.js';
 // import Button from '@material-ui/core/Button';
 // import Button from './Button/Button.js';
 import { connect } from 'react-redux';
-import { getCategories, getProducts, enterSite, showLoader } from './redux/actions'
+import { getCategories, getProducts, enterSite, showLoader } from './redux/actions';
 // import { makeStyles } from '@material-ui/core/styles';
 import './global.scss';
 const axios = require('axios');
@@ -24,8 +24,6 @@ const axios = require('axios');
 // }));
 
 function App(props) {
-
-  console.log("USERNAME", props.username)
 
   const url = "http://localhost:4000/api"
   // "https://my-store-toolkit.herokuapp.com/api"

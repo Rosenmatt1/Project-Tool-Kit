@@ -17,10 +17,9 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     width: '250px',
     display: 'flex',
-    flexDirection: 'column',
+    // flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    // border: '1px solid red',
     zIndex: 3
   },
 }));
@@ -29,11 +28,28 @@ function Purchase(props) {
 
   const classes = useStyles();
 
-  console.log("props", props)
+  console.log("PURCHASE Rendered!!!")
 
   return (
-    // <h1 className={classes.purchase}>Purchase</h1>
-    <Products />
+    <div>
+    <h1 className={classes.purchase}>Purchase</h1>
+
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    <p>fvfvfvfvfvd</p>
+    </div>
+
+    // <Products />
+
     // <Card className={classes.card}>
     // <CardActionArea>
     //    <CardMedia 

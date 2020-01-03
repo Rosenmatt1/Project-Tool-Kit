@@ -10,8 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { loggedIn, username, userID, showLoader } from '../redux/actions';
-// const axios = require('axios');
-// import { Grid } from '@material-ui/core';
+const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -21,7 +20,6 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    // border: '1px solid red',
     zIndex: 3
   },
 }));
@@ -97,7 +95,34 @@ function CreateAccount(props) {
   //   })
   // }
 
-  const postUser = (route) => {
+  // const postUser = (route) => {
+  //   axios.post(`${url}/user`, {
+  //       username: email,
+  //       password: password
+  //   })
+  //     .then(data => {
+  //       if (data.response === 400) {
+  //         console.log("dataRESPONSE 400 fired!!!!")
+  //       }
+  //       console.log("createAccount data", data)
+  //       const username = data.user.username.slice(0, data.user.username.indexOf('@'))
+  //       props.username(username)
+  //       props.userID(data.user.id)
+  //       if (data.jwt) {
+  //         console.log("jwt arrived!")
+  //         localStorage.setItem('jwt', data.jwt)
+  //         props.loggedIn(true)
+  //       } else {
+  //         console.log("no jwt")
+  //         console.log("data", data)
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.error(error)
+  //     })
+  // }
+
+  const postUser = () => {
     fetch(`${url}/user`, {
       method: "POST",
       headers: {

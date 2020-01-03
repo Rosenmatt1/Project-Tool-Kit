@@ -9,7 +9,7 @@ import CreateAccount from '../CreateAccount/CreateAccount.js'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { loggedIn, username, userID, showLoader, error400 } from '../redux/actions';
+import { loggedIn, username, userID, showLoader, error400, openLogIn } from '../redux/actions';
 // const axios = require('axios');
 // import { Grid } from '@material-ui/core';
 
@@ -34,7 +34,6 @@ function LoginForm(props) {
 
   const logInValidation = () => {
     const validateUsername = /^\w+@\w+\.com/.test(email)
-    console.log(validateUsername)
 
     if (validateUsername === false) {
       console.log("email failed")
@@ -63,12 +62,6 @@ function LoginForm(props) {
       showEmailError(false)
       showPasswordError(false)
       postUser()
-
-      // if (!localStorage.jwt) {
-      //   props.loggedIn(false)
-      // } else {
-      //   props.loggedIn(true)
-      // }
     }
   }
 
@@ -83,7 +76,7 @@ function LoginForm(props) {
   // "https://my-store-toolkit.herokuapp.com/api"
   // http://localhost:4000/api
 
-  const postUser = (route) => {
+  const postUser = () => {
     fetch(`${url}/login`, {
       method: "POST",
       headers: {
@@ -96,13 +89,12 @@ function LoginForm(props) {
     })
       .then(response => response.json())
       .then(data => {
-        // if (data.status === 400) {
+        // if (!data) {
         //   console.log("login400error!!!!!!!!!")
         //   props.error400(true)
         // }
-        console.log("data in login", data)
+        // console.log("DATA", data)
         const username = data.user.username.slice(0, data.user.username.indexOf('@'))
-        console.log("username in login", username)
         props.username(username)
         props.userID(data.user.id)
         if (data.jwt) {
@@ -114,7 +106,6 @@ function LoginForm(props) {
           props.loggedIn(false)
           props.openLogIn(true)
           props.error400(true)
-          
         }
       })
       .catch(error => {
@@ -220,4 +211,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { loggedIn, username, userID, showLoader, error400 })(LoginForm)
+export default connect(mapStateToProps, { loggedIn, username, userID, showLoader, error400, openLogIn })(LoginForm)

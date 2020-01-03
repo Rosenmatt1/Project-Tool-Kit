@@ -4,7 +4,6 @@ import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 import { Route, Link } from "react-router-dom";
 import * as _ from 'lodash';
 // import CreateAccount from '../CreateAccount/CreateAccount.js';
-import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import HomeIcon from '@material-ui/icons/Home';
 import Card from '../Card/Card.js';
@@ -65,7 +64,7 @@ function Navbar(props) {
     <AppBar className={classes.root} position="static">
       <Toolbar className={classes.spacer}>
         <IconButton edge="start" color="inherit" aria-label="menu">
-          {/* <MenuIcon /> */}
+          
           <Route exact path="/" component={Card} />
           <Link to="/">
             <HomeIcon style={{ textDecoration: 'none', color: 'white' }} onClick={() => backToHome(false)} fontSize="large" />

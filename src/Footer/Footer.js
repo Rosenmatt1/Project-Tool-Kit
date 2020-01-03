@@ -6,6 +6,9 @@ import { Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { tabSelected } from '../redux/actions';
 import Products from '../Products/Products.js';
+// import Clothing from '../Clothing/Clothing.js';
+// import Electronics from '../Electronics/Electronics.js';
+// import Misc from '../Misc/Misc.js';
 
 const useStyles = makeStyles({
   root: {
