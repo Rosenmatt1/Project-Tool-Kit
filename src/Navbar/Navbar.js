@@ -101,4 +101,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { openLogIn, loggedIn, username, enterSite,showLoader })(Navbar)
+export default connect(mapStateToProps, { openLogIn, loggedIn, username, enterSite, showLoader })(Navbar)

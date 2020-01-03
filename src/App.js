@@ -58,7 +58,7 @@ function App(props) {
     waitThree()
     fetchCategories()
     fetchProducts()
-    // props.enterSite(false)
+    localStorage.removeItem('jwt')
   }, [])
 
   // const classes = useStyles();

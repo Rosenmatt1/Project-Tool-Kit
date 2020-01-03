@@ -32,7 +32,7 @@ function LoginForm(props) {
   const [passwordError, showPasswordError] = useState(false);
   // isLoggedIn: localStorage.jwt ? true : false,
 
-  const logInValidation = (val) => {
+  const logInValidation = () => {
     const validateUsername = /^\w+@\w+\.com/.test(email)
     console.log(validateUsername)
 
@@ -57,18 +57,18 @@ function LoginForm(props) {
     }
 
     if (validateUsername && password.length > 6) {
-      console.log("user validated on front end")
       waitThree()
       setEmail("")
       setPassword("")
       showEmailError(false)
       showPasswordError(false)
       postUser()
-      if (props.invalidUsername) {
-        props.loggedIn(false)
-      } else {
-        props.loggedIn(true)
-      }
+
+      // if (!localStorage.jwt) {
+      //   props.loggedIn(false)
+      // } else {
+      //   props.loggedIn(true)
+      // }
     }
   }
 
@@ -94,27 +94,31 @@ function LoginForm(props) {
         password: password
       }),
     })
-      .then(response => {
-        if (response.status === 400) {
-          console.log("login400error")
-          props.error400(true)
-        }
-        response.json()
-      })
+      .then(response => response.json())
       .then(data => {
+        // if (data.status === 400) {
+        //   console.log("login400error!!!!!!!!!")
+        //   props.error400(true)
+        // }
+        console.log("data in login", data)
         const username = data.user.username.slice(0, data.user.username.indexOf('@'))
-        if (username) {
-          props.username(username)
-          props.userID(data.user.id)
-        }
+        console.log("username in login", username)
+        props.username(username)
+        props.userID(data.user.id)
         if (data.jwt) {
           localStorage.setItem('jwt', data.jwt)
           props.loggedIn(true)
+          props.error400(false)
+          props.openLogIn(false)
         } else {
-          console.log("no jwt")
+          props.loggedIn(false)
+          props.openLogIn(true)
+          props.error400(true)
+          
         }
       })
       .catch(error => {
+        props.error400(true)
         console.error(error)
       })
   }
@@ -154,8 +158,9 @@ function LoginForm(props) {
           onChange={(e) => setEmail(e.target.value)}
         // defaultValue="Hello World" 
         />
+
         {emailError &&
-          <div className="errorMessage"> Email must include @.com </div>}
+          <div className="errorMessage"> Must provide a valid email address </div>}
 
         <TextField
           id="standard-password-input"
@@ -173,27 +178,28 @@ function LoginForm(props) {
         {props.invalidUserInfo &&
           <div className="errorMessage"> Invalid Username or Password </div>}
 
-        <Route path="/electronics" component={props.loader ? Loader : Products} />
+        {/* <Route path="/electronics" component={props.loader ? Loader : Products} />
         <Link to="electronics">
           <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
             Login
           </Button>
-        </Link>
-        {/* {props.authenticated ?
+        </Link> */}
+
+        {props.authenticated ?
+
+          <Button className="buttonSpacer" onClick={() => logInValidation()} variant="contained" color="primary">
+            Login
+          </Button>
+          :
           <div>
             <Route path="/electronics" component={props.loader ? Loader : Products} />
             <Link to="electronics">
-              <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
+              <Button className="buttonSpacer" onClick={() => logInValidation()} variant="contained" color="primary">
                 Login
           </Button>
             </Link>
           </div>
-          :
-          <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
-            Login
-          </Button>
-        } */}
-
+        }
 
         <Route path="/createAccount" component={CreateAccount} />
         <Link to="createAccount">

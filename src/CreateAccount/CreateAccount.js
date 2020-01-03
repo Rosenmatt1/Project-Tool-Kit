@@ -108,12 +108,7 @@ function CreateAccount(props) {
         password: password
       }),
     })
-      .then(response => {
-        if (response.status === 400) {
-          console.log("createAccount400error")
-        }
-        response.json()
-      })
+      .then(response => response.json())
       .then(data => {
         console.log("createAccount data", data)
         const username = data.user.username.slice(0, data.user.username.indexOf('@'))
