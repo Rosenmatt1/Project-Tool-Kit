@@ -43,7 +43,7 @@ function CreateAccount(props) {
       showEmailError(true)
       setEmail("")
       setPassword("")
-      if (password.length < 6) {
+      if (password.length > 6) {
         showPasswordError(false)
       }
     }
@@ -53,7 +53,7 @@ function CreateAccount(props) {
       showPasswordError(true)
       setEmail("")
       setPassword("")
-      if (validateUsername === false) {
+      if (validateUsername === true) {
         showEmailError(false)
       }
     }
@@ -66,7 +66,7 @@ function CreateAccount(props) {
       showEmailError(false)
       showPasswordError(false)
       postUser()
-      props.loggedIn(val)
+      // props.loggedIn(val)
     }
   }
 
@@ -218,17 +218,27 @@ function CreateAccount(props) {
         {passwordError &&
           <div className="errorMessage"> Password length must be greater than 6 characters </div>}
 
-        <Route path="/electronics" component={props.loader ? Loader : Products} />
-        <Link to="electronics">
+        {props.authenticated ?
+        <div>
+          <Route path="/electronics" component={props.loader ? Loader : Products} />
+          <Link to="electronics">
+            <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
+              Create
+        </Button>
+          </Link>
+          </div>
+        :
           <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
             Create
         </Button>
-        </Link>
+
+        }
 
         <Route path="/loginForm" component={LoginForm} />
         <Link to="loginForm">
           <div className="account"> Already have an account? </div>
         </Link>
+
 
       </div>
     </form>
