@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { loggedIn, username, userID, showLoader } from '../redux/actions';
-const axios = require('axios');
+// const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -31,7 +31,7 @@ function CreateAccount(props) {
   const [passwordError, showPasswordError] = useState(false);
   // isLoggedIn: localStorage.jwt ? true : false,
 
-  const url = "http://localhost:4000/api"
+  const url = "https://my-store-toolkit.herokuapp.com/api"
   // "https://my-store-toolkit.herokuapp.com/api"
   // http://localhost:4000/api
 
@@ -203,7 +203,7 @@ function CreateAccount(props) {
         // defaultValue="Hello World" 
         />
         {emailError &&
-          <div className="errorMessage">Must provide a valid .com email address </div>}
+          <div className="errorMessage"> Must provide a valid .com email address </div>}
 
         <TextField
           id="standard-password-input"

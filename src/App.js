@@ -25,7 +25,7 @@ const axios = require('axios');
 
 function App(props) {
 
-  const url = "http://localhost:4000/api"
+  const url = "https://my-store-toolkit.herokuapp.com/api"
   // "https://my-store-toolkit.herokuapp.com/api"
   // http://localhost:4000/api
 
@@ -49,7 +49,7 @@ function App(props) {
   const waitThree = () => {
     _.delay((val) => {
       props.showLoader(val)
-    }, 1000, false)
+    }, 2200, false)
   }
 
   useEffect(() => {

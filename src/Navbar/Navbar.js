@@ -18,7 +18,7 @@ function Navbar(props) {
       position: 'fixed',
       top: 0,
       left: 0,
-      right: 0
+      right: 0,
     },
     menuButton: {
       marginRight: theme.spacing(2),

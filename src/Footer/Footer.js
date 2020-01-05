@@ -19,7 +19,8 @@ const useStyles = makeStyles({
     right: 0,
     padding: 20,
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 10,
+    zIndex: 1
   },
   tabs: {
     padding: 20,
