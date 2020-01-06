@@ -12,6 +12,8 @@ import Loader from './Loader/Loader.js';
 // import Purchase from './Purchase/Purchase.js';
 // import Button from '@material-ui/core/Button';
 // import Button from './Button/Button.js';
+
+import Keyframes from './Keyframes/Keyframes.js';
 import { connect } from 'react-redux';
 import { getCategories, getProducts, enterSite, showLoader } from './redux/actions';
 // import { makeStyles } from '@material-ui/core/styles';
@@ -63,7 +65,8 @@ function App(props) {
 
   return (
     <Grid container>
-      {props.loader ?
+      <Keyframes />
+      {/* {props.loader ?
         <Loader />
         :
         !props.entered ?
@@ -79,7 +82,7 @@ function App(props) {
             }
             <Footer />
           </Grid>
-      }
+      } */}
     </Grid>
   );
 }
