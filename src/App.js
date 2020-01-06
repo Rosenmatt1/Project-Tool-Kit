@@ -14,6 +14,7 @@ import Loader from './Loader/Loader.js';
 // import Button from './Button/Button.js';
 
 import Keyframes from './Keyframes/Keyframes.js';
+import Transitions from './Transitions/Transitions.js'
 import { connect } from 'react-redux';
 import { getCategories, getProducts, enterSite, showLoader } from './redux/actions';
 // import { makeStyles } from '@material-ui/core/styles';
@@ -65,7 +66,9 @@ function App(props) {
 
   return (
     <Grid container>
-      <Keyframes />
+      {/* <Keyframes /> */}
+      <Transitions />
+
       {/* {props.loader ?
         <Loader />
         :
