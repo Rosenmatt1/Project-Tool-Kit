@@ -45,7 +45,7 @@ function LoginForm(props) {
       }
     }
 
-    if (password.length < 6) {
+    if (password.length <= 6) {
       console.log("password failed")
       showPasswordError(true)
       setEmail("")
@@ -61,7 +61,7 @@ function LoginForm(props) {
       setPassword("")
       showEmailError(false)
       showPasswordError(false)
-      props.loggedIn(true)
+      // props.loggedIn(true)
       // props.error400(false)
       postUser()
     }
@@ -171,9 +171,10 @@ function LoginForm(props) {
         {props.invalidUserInfo &&
           <div className="errorMessage"> Invalid Username or Password </div>}
 
+        <Route path="/electronics" component={Products} />
+
         {props.authenticated ?
           <div>
-            <Route path="/electronics" component={Products} />
             <Link to="electronics">
               <Button className="buttonSpacer" onClick={() => logInValidation()} variant="contained" color="primary">
                 Login

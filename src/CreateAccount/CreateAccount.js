@@ -48,7 +48,7 @@ function CreateAccount(props) {
       }
     }
 
-    if (password.length < 6) {
+    if (password.length <= 6) {
       console.log("password failed")
       showPasswordError(true)
       setEmail("")
@@ -65,7 +65,7 @@ function CreateAccount(props) {
       setPassword("")
       showEmailError(false)
       showPasswordError(false)
-      props.loggedIn(true)
+      // props.loggedIn(true)
       postUser()
     }
   }
