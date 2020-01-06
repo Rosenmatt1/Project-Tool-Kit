@@ -4,7 +4,7 @@ import './LoginForm.scss';
 import TextField from '@material-ui/core/TextField';
 import { Route, Link } from "react-router-dom";
 import Products from '../Products/Products.js';
-import Loader from '../Loader/Loader.js';
+// import Loader from '../Loader/Loader.js';
 import CreateAccount from '../CreateAccount/CreateAccount.js'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -40,7 +40,7 @@ function LoginForm(props) {
       showEmailError(true)
       setEmail("")
       setPassword("")
-      if (password.length < 6) {
+      if (password.length > 6) {
         showPasswordError(false)
       }
     }
@@ -50,7 +50,7 @@ function LoginForm(props) {
       showPasswordError(true)
       setEmail("")
       setPassword("")
-      if (validateUsername === false) {
+      if (validateUsername === true) {
         showEmailError(false)
       }
     }
@@ -61,6 +61,8 @@ function LoginForm(props) {
       setPassword("")
       showEmailError(false)
       showPasswordError(false)
+      props.loggedIn(true)
+      // props.error400(false)
       postUser()
     }
   }
@@ -169,27 +171,19 @@ function LoginForm(props) {
         {props.invalidUserInfo &&
           <div className="errorMessage"> Invalid Username or Password </div>}
 
-        {/* <Route path="/electronics" component={props.loader ? Loader : Products} />
-        <Link to="electronics">
-          <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
-            Login
-          </Button>
-        </Link> */}
-
         {props.authenticated ?
-
-          <Button className="buttonSpacer" onClick={() => logInValidation()} variant="contained" color="primary">
-            Login
-          </Button>
-          :
           <div>
-            <Route path="/electronics" component={props.loader ? Loader : Products} />
+            <Route path="/electronics" component={Products} />
             <Link to="electronics">
               <Button className="buttonSpacer" onClick={() => logInValidation()} variant="contained" color="primary">
                 Login
           </Button>
             </Link>
           </div>
+          :
+          <Button className="buttonSpacer" onClick={() => logInValidation()} variant="contained" color="primary">
+            Login
+          </Button>
         }
 
         <Route path="/createAccount" component={CreateAccount} />

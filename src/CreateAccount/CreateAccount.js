@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { Route, Link } from "react-router-dom";
 import Products from '../Products/Products.js';
 import LoginForm from '../LoginForm/LoginForm.js';
-import Loader from '../Loader/Loader.js';
+// import Loader from '../Loader/Loader.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
@@ -35,7 +35,7 @@ function CreateAccount(props) {
   // "https://my-store-toolkit.herokuapp.com/api"
   // http://localhost:4000/api
 
-  const logInValidation = (val) => {
+  const logInValidation = () => {
     const validateUsername = /^\w+@\w+\.com/.test(email)
 
     if (validateUsername === false) {
@@ -59,14 +59,14 @@ function CreateAccount(props) {
     }
 
     if (validateUsername && password.length > 6) {
-      console.log("user validated")
+      // console.log("user validated")
       waitThree()
       setEmail("")
       setPassword("")
       showEmailError(false)
       showPasswordError(false)
+      props.loggedIn(true)
       postUser()
-      // props.loggedIn(val)
     }
   }
 
@@ -145,7 +145,8 @@ function CreateAccount(props) {
           props.loggedIn(true)
         } else {
           console.log("no jwt")
-          console.log("data", data)
+          props.loggedIn(false)
+
         }
       })
       .catch(error => {
@@ -218,20 +219,20 @@ function CreateAccount(props) {
         {passwordError &&
           <div className="errorMessage"> Password length must be greater than 6 characters </div>}
 
-        {props.authenticated ?
-        <div>
-          <Route path="/electronics" component={props.loader ? Loader : Products} />
-          <Link to="electronics">
-            <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
-              Create
+        {props.authenticated
+          ?
+          <div>
+            <Route path="/electronics" component={Products} />
+            <Link to="electronics">
+              <Button className="buttonSpacer" onClick={() => logInValidation()} variant="contained" color="primary">
+                Create
         </Button>
-          </Link>
+            </Link>
           </div>
-        :
-          <Button className="buttonSpacer" onClick={() => logInValidation(true)} variant="contained" color="primary">
+          :
+          <Button className="buttonSpacer" onClick={() => logInValidation()} variant="contained" color="primary">
             Create
         </Button>
-
         }
 
         <Route path="/loginForm" component={LoginForm} />
