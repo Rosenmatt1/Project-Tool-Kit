@@ -27,7 +27,9 @@ function Card(props) {
 
       <Route path="/electronics" component={Products} />
       <Link to="electronics">
-        <div className="yt" onClick={() => handleEnterSite(true)}><div className="purchase" >Enter Store</div></div>
+          <div className="yt" onClick={() => handleEnterSite(true)}>
+            <div className="purchase" >Enter Store</div>
+          </div>
       </Link>
 
     </div>
