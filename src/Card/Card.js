@@ -13,7 +13,7 @@ function Card(props) {
   }
 
   return (
-    <div className={`flex-column ${!props.authenticated ? "cardContainer" : ""}`}>
+    <div className="flex-column cardContainer">
       <div className="card">
 
         <img src="//unsplash.it/400/250" alt="" className="card__img" />
