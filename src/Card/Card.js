@@ -7,20 +7,13 @@ import './Card.scss'
 // const axios = require('axios');
 
 function Card(props) {
-  // axios({
-  //   method: 'post',
-  //   url: 'http://localhost:4000/api/categories',
-  //   data: {
-  //     name: "household"
-  //   }
-  // });
 
   const handleEnterSite = (enter) => {
     props.enterSite(enter)
   }
 
   return (
-    <div className="flex-column">
+    <div className={`flex-column ${!props.authenticated ? "cardContainer" : ""}`}>
       <div className="card">
 
         <img src="//unsplash.it/400/250" alt="" className="card__img" />
@@ -42,7 +35,10 @@ function Card(props) {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return {
+    ...state,
+    authenticated: state.loggedIn,
+  }
 }
 
 export default connect(mapStateToProps, { enterSite })(Card)

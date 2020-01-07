@@ -9,22 +9,14 @@ import CreateAccount from './CreateAccount/CreateAccount.js';
 import { Grid } from '@material-ui/core';
 import Card from './Card/Card.js';
 import Loader from './Loader/Loader.js';
-// import Purchase from './Purchase/Purchase.js';
-// import Button from '@material-ui/core/Button';
-// import Button from './Button/Button.js';
-
-import Keyframes from './Keyframes/Keyframes.js';
-import Transitions from './Transitions/Transitions.js'
+// import Keyframes from './Keyframes/Keyframes.js';
+// import Transitions from './Transitions/Transitions.js'
 import { connect } from 'react-redux';
 import { getCategories, getProducts, enterSite, showLoader } from './redux/actions';
-// import { makeStyles } from '@material-ui/core/styles';
 import './global.scss';
 const axios = require('axios');
 
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//   },
-// }));
+
 
 function App(props) {
 
@@ -62,14 +54,11 @@ function App(props) {
     localStorage.removeItem('jwt')
   }, [])
 
-  // const classes = useStyles();
-
   return (
     <Grid container>
       {/* <Keyframes /> */}
-      <Transitions />
-
-      {/* {props.loader ?
+      {/* <Transitions /> */}
+      {props.loader ?
         <Loader />
         :
         !props.entered ?
@@ -85,7 +74,7 @@ function App(props) {
             }
             <Footer />
           </Grid>
-      } */}
+      }
     </Grid>
   );
 }

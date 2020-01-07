@@ -48,15 +48,15 @@ function Navbar(props) {
 
   const backToHome = () => {
     props.enterSite(false)
-    waitThree()
+    // waitThree()
   }
 
-  const waitThree = () => {
-    props.showLoader(true)
-    _.delay((val) => {
-      props.showLoader(val)
-    }, 1000, false)
-  }
+  // const waitThree = () => {
+  //   props.showLoader(true)
+  //   _.delay((val) => {
+  //     props.showLoader(val)
+  //   }, 1000, false)
+  // }
 
   const classes = useStyles();
 

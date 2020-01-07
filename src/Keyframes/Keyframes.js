@@ -12,8 +12,10 @@ function Keyframes(props) {
   // }
 
   return (
-    <div className="box">
-      Hello Keyframe
+    <div className="bodyKey"> 
+      <div className="box">
+        Hello Keyframe
+    </div>
     </div>
   )
 }

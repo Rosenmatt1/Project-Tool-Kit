@@ -18,6 +18,18 @@ body {
   align-items: center;
 }
 
+.cardContainer {
+  position: relative;
+  animation-name: movecard;
+  animation-duration: 3s;  //can be set to: infinite
+  animation-fill-mode: forwards;
+}
+
+@keyframes movecard {
+  0% {top: -300px;}
+  100% {top: 0px;}
+}
+
 .card {
   position: relative;
   width: 80%;
@@ -105,7 +117,6 @@ body {
 .card__text {
   text-align: right;
 }
-
 
 .yt {
   color: black;

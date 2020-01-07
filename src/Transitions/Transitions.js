@@ -12,8 +12,10 @@ function Transitions(props) {
   // }
 
   return (
-    <div className="box1">
-      Hello Transition
+    <div className="bodyTrans">
+      <div className="box1">
+        Hello Transition
+    </div>
     </div>
   )
 }
