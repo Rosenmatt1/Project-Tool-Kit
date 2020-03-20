@@ -53,12 +53,13 @@ function Item(props) {
 
         {/* render={(props) => <Purchase name={props.name} description={props.description} category_id={props.category_id} id={props.id} key={props.key} price={props.price}
           img_url={props.img_url} />} */}
-        <Route path="/purchase" component={Purchase} />
+
+        {/* <Route path="/purchase" component={Purchase} />
         <Link to="purchase">
           <Button onClick={() => itemClicked(props.id)} size="small" color="primary">
             Purchase
           </Button>
-        </Link>
+        </Link> */}
 
       </CardActions>
     </Card>
