@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Purchase from '../Purchase/Purchase.js';
+// import Purchase from '../Purchase/Purchase.js';
 // import Clothing from '../Clothing/Clothing.js';
 import { Route, Link } from "react-router-dom";
 // import { Grid } from '@material-ui/core';
