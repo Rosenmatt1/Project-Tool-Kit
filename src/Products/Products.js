@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 function Products(props) {
   const products = props.products || null
+  console.log(products)
 
   return (
     <Grid container spacing={3}

@@ -37,7 +37,7 @@ function Item(props) {
           component="img"
           alt={props.name}
           height="140"
-          image="//unsplash.it/250/250"
+          src={props.img_url}
           title={props.name}
         />
         <CardContent>

@@ -4,6 +4,7 @@ import { enterSite } from '../redux/actions';
 import Products from '../Products/Products.js';
 import { Route, Link } from "react-router-dom";
 import './Card.scss'
+import home from '../pictures/home.jpg';
 // const axios = require('axios');
 
 function Card(props) {
@@ -16,7 +17,7 @@ function Card(props) {
     <div className="flex-column cardContainer">
       <div className="card">
 
-        <img src="//unsplash.it/400/250" alt="" className="card__img" />
+        <img src={home} alt="" className="card__img" />
 
         <div className="card__body">
           <h3 className="card__title">Welcome</h3>
