@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 // import Purchase from '../Purchase/Purchase.js';
 // import Clothing from '../Clothing/Clothing.js';
+import pic from '../pictures/home.jpg';
 import { Route, Link } from "react-router-dom";
 // import { Grid } from '@material-ui/core';
 
@@ -37,7 +38,7 @@ function Item(props) {
           component="img"
           alt={props.name}
           height="140"
-          src={props.img_url}
+          src={pic}
           title={props.name}
         />
         <CardContent>
