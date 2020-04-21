@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 function Products(props) {
   const products = props.products || null
-  console.log(products)
+  console.log("tabSelected!!", props.tab)
 
   return (
     <Grid container spacing={3}

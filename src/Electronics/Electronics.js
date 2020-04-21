@@ -4,6 +4,7 @@ import Item from '../Item/Item.js'
 import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 
+
 function Electronics(props) {
   const products = props.products || null
 

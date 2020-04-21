@@ -5,6 +5,7 @@ import Products from '../Products/Products.js';
 import { Route, Link } from "react-router-dom";
 import './Card.scss'
 import home from '../pictures/home.jpg';
+// import electronics from '../pictures/electronics.jpg';
 // const axios = require('axios');
 
 function Card(props) {
@@ -12,6 +13,8 @@ function Card(props) {
   const handleEnterSite = (enter) => {
     props.enterSite(enter)
   }
+
+  console.log("tabSelected!!12345", props.tab)
 
   return (
     <div className="flex-column cardContainer">
@@ -41,6 +44,7 @@ const mapStateToProps = (state) => {
   return {
     ...state,
     authenticated: state.loggedIn,
+    tab: state.tabSelected
   }
 }
 

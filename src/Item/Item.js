@@ -10,7 +10,10 @@ import Typography from '@material-ui/core/Typography';
 // import Purchase from '../Purchase/Purchase.js';
 // import Clothing from '../Clothing/Clothing.js';
 import pic from '../pictures/home.jpg';
+import misc from '../pictures/misc.jpg';
+import electronics2 from '../pictures/electronics2.jpg';
 import { Route, Link } from "react-router-dom";
+import { connect } from 'react-redux';
 // import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -38,7 +41,7 @@ function Item(props) {
           component="img"
           alt={props.name}
           height="140"
-          src={pic}
+          src={props.tab === 1 ? electronics2 : props.tab === 0 ? pic : misc}
           title={props.name}
         />
         <CardContent>
@@ -66,4 +69,11 @@ function Item(props) {
     </Card>
   );
 }
-export default Item
+
+const mapStateToProps = (state) => {
+  return {
+    tab: state.tabSelected
+  }
+}
+
+export default connect(mapStateToProps)(Item)
