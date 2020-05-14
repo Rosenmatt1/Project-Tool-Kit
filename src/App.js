@@ -6,6 +6,7 @@ import Navbar from './Navbar/Navbar.js';
 import Footer from './Footer/Footer.js';
 import LoginForm from './LoginForm/LoginForm.js';
 import CreateAccount from './CreateAccount/CreateAccount.js';
+import Purchase from './Purchase/Purchase.js';
 import { Grid } from '@material-ui/core';
 import Card from './Card/Card.js';
 import Loader from './Loader/Loader.js';
@@ -15,7 +16,6 @@ import { connect } from 'react-redux';
 import { getCategories, getProducts, enterSite, showLoader } from './redux/actions';
 import './global.scss';
 const axios = require('axios');
-
 
 
 function App(props) {
@@ -58,6 +58,7 @@ function App(props) {
     <Grid container>
       {/* <Keyframes /> */}
       {/* <Transitions /> */}
+      <Route path="/purchase" component={Purchase} />
       {props.loader ?
         <Loader />
         :

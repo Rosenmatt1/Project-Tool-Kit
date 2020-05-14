@@ -7,8 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import Purchase from '../Purchase/Purchase.js';
-// import Clothing from '../Clothing/Clothing.js';
+import Purchase from '../Purchase/Purchase.js';
 import pic from '../pictures/home.jpg';
 import misc from '../pictures/misc.jpg';
 import electronics2 from '../pictures/electronics2.jpg';
@@ -58,12 +57,11 @@ function Item(props) {
         {/* render={(props) => <Purchase name={props.name} description={props.description} category_id={props.category_id} id={props.id} key={props.key} price={props.price}
           img_url={props.img_url} />} */}
 
-        {/* <Route path="/purchase" component={Purchase} />
         <Link to="purchase">
           <Button onClick={() => itemClicked(props.id)} size="small" color="primary">
             Purchase
           </Button>
-        </Link> */}
+        </Link>
 
       </CardActions>
     </Card>
