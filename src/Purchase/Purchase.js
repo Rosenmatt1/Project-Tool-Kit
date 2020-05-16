@@ -7,8 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
 // import { Route, Link } from "react-router-dom";
-
 // import Products from '../Products/Products.js'
 // import { Grid } from '@material-ui/core';
 
@@ -32,7 +32,6 @@ function Purchase(props) {
 
   return (
  
-
     <Card className={classes.card}>
     <CardActionArea>
        <CardMedia 
@@ -63,4 +62,11 @@ function Purchase(props) {
   );
 }
 
-export default Purchase
+
+const mapStateToProps = (state) => {
+  return {
+    tab: state.tabSelected
+  }
+}
+
+export default connect(mapStateToProps)(Purchase)
