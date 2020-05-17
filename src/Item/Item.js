@@ -29,8 +29,61 @@ function Item(props) {
 
   const itemClicked = (val) => {
     console.log("item clicked")
-    console.log("propsID", val)
+    console.log("Item propsID", val)
     // console.log("ITEM KEY", props.key)
+  }
+
+  componentDidMount() {
+    console.log("this.props", this.props)
+    const id = this.props.match.params.id
+    fetch(`http://localhost:4000/api/products/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("data", data)
+        this.setState({
+          product: data.product,
+          isLoaded: true
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  initiateStripeCheckout = async () => {
+    console.log("Checkout")
+    const stripe = window.Stripe('pk_test_KvKqn0sBllyJWVVK04UUBaQN00tZcJimdy')
+    const { product } = this.state
+
+    const lineItem = {
+      name: product.name,
+      description: product.description,
+      images: [product.img_url],
+      amount: product.price,
+      currency: 'usd',
+      quantity: 1,
+    }
+
+    try {
+      // Initiate checkout session to get session id
+      const response = await fetch('http://localhost:4000/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(lineItem)
+      })
+
+      const data = await response.json()
+      const sessionId = data.session.id
+
+      // Redirect to checkout
+      const result = await stripe.redirectToCheckout({ sessionId })
+      // TODO: add error handling for result.error
+    } catch (error) {
+      console.log('STRIPE ERROR', error)
+    }
   }
 
   return (
