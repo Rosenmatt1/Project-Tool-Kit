@@ -33,25 +33,25 @@ function Item(props) {
     // console.log("ITEM KEY", props.key)
   }
 
-  componentDidMount() {
-    console.log("this.props", this.props)
-    const id = this.props.match.params.id
-    fetch(`http://localhost:4000/api/products/${id}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log("data", data)
-        this.setState({
-          product: data.product,
-          isLoaded: true
-        })
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+  // componentDidMount() {
+  //   console.log("this.props", this.props)
+  //   const id = this.props.match.params.id
+  //   fetch(`http://localhost:4000/api/products/${id}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log("data", data)
+  //       this.setState({
+  //         product: data.product,
+  //         isLoaded: true
+  //       })
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // }
 
-  initiateStripeCheckout = async () => {
-    console.log("Checkout")
+  const initiateStripeCheckout = async () => {
+    console.log("Stripe Checkout!")
     const stripe = window.Stripe('pk_test_KvKqn0sBllyJWVVK04UUBaQN00tZcJimdy')
     const { product } = this.state
 
@@ -111,7 +111,7 @@ function Item(props) {
           img_url={props.img_url} />} */}
 
         <Link to="purchase">
-          <Button onClick={this.initiateStripeCheckout} size="small" color="primary">
+          <Button onClick={initiateStripeCheckout} size="small" color="primary">
             Purchase
           </Button>
         </Link>
