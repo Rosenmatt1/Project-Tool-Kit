@@ -111,7 +111,7 @@ function Item(props) {
           img_url={props.img_url} />} */}
 
         <Link to="purchase">
-          <Button onClick={() => itemClicked(props.id)} size="small" color="primary">
+          <Button onClick={this.initiateStripeCheckout} size="small" color="primary">
             Purchase
           </Button>
         </Link>
