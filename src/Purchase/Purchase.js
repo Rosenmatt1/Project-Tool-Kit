@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -25,13 +25,70 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Purchase(props) {
-
   const classes = useStyles();
-
   console.log("PURCHASE Rendered!!!")
 
+  // useEffect(() => {
+
+  // }, [])
+
+  // const [email, setEmail] = useState("");
+
+  // componentDidMount() {
+  //   console.log("this.props", this.props)
+  //   const id = this.props.match.params.id
+  //   fetch(`http://localhost:4000/api/products/${id}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log("data", data)
+  //       this.setState({
+  //         product: data.product,
+  //         isLoaded: true
+  //       })
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // }
+
+  const initiateStripeCheckout = async () => {
+    console.log("Stripe Checkout!")
+    const stripe = window.Stripe('pk_test_KvKqn0sBllyJWVVK04UUBaQN00tZcJimdy')
+    const { product } = this.state
+
+    const lineItem = {
+      name: product.name,
+      description: product.description,
+      images: [product.img_url],
+      amount: product.price,
+      currency: 'usd',
+      quantity: 1,
+    }
+
+    try {
+      // Initiate checkout session to get session id
+      const response = await fetch('http://localhost:4000/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(lineItem)
+      })
+
+      const data = await response.json()
+      const sessionId = data.session.id
+
+      // Redirect to checkout
+      const result = await stripe.redirectToCheckout({ sessionId })
+      // TODO: add error handling for result.error
+    } catch (error) {
+      console.log('STRIPE ERROR', error)
+    }
+  }
+
+
   return (
- 
     <Card className={classes.card}>
     <CardActionArea>
        <CardMedia 
