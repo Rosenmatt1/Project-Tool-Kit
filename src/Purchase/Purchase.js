@@ -28,11 +28,11 @@ function Purchase(props) {
   const classes = useStyles();
   console.log("PURCHASE Rendered!!!")
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  // }, [])
+  }, [])
 
-  // const [email, setEmail] = useState("");
+  const [product, setProduct] = useState("");
 
   // componentDidMount() {
   //   console.log("this.props", this.props)
